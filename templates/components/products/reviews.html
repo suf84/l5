@@ -1,0 +1,64 @@
+{{~inject 'productpageURL' product.url}}
+{{~inject 'productpageReviewsCount' theme_settings.productpage_reviews_count}}
+
+<article class="productReviews" id="product-reviews" data-product-reviews>
+    <div class="review-section review-section--upper">
+        <h2 class="review-section__heading h1">
+            {{lang 'products.reviews.header' total=reviews.total}}
+        </h2>
+        <div class="review-section__rating">
+            {{#if settings.show_product_rating}}
+                {{> components/products/ratings rating=product.rating}}
+                <span>
+                    {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                </span>
+            {{/if}}
+        </div>
+        <div class="review-section__button-bar">
+            {{#if settings.show_product_reviews}}
+                <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}" class="button button--primary" {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}} role="button">
+                    {{lang 'products.reviews.new'}}
+                </a>
+                {{!> components/products/modals/writeReview}}
+            {{/if}}
+        </div>
+    </div>
+    <div class="review-section review-section--lower">
+        <ul class="review-section__list" id="productReviews-list">
+            {{#each reviews.list}}
+            <li class="productReview">
+                <article>
+                    <header class="productReview-header">
+                        <div class="productReview-info">
+                            <h3 class="productReview-title">{{{ sanitize title }}}</h3>
+                            <p class="productReview-date">
+                                {{~name~}}
+                                {{#and (if name) (if date)}},{{/and}}
+                                {{{date}}}
+                            </p>
+                        </div>
+                        <div class="productReview-rating rating--small">
+                            {{> components/products/ratings rating=rating}}
+                            <span class="productReview-ratingNumber">{{ rating }}</span>
+                        </div>
+                    </header>
+                    <p class="productReview-body">{{{ sanitize text }}}</p>
+                </article>
+            </li>
+            {{/each}}
+        </ul>
+        <div>
+            {{#if pagination.reviews}}
+                <button type="button" class="load-more-reviews js-load-more-reviews" data-current-page="{{pagination.reviews.current}}">
+                    <span>
+                        Read More Reviews
+                    </span>
+                    <span class="icon icon--chevron-down">
+                        <svg><use xlink:href="#icon-chevron-down"></use></svg>
+                    </span>
+                </button>
+            {{/if}}
+        </div>
+    </div>
+    {{!> components/common/paginator pagination.reviews reload=true}}
+</article>

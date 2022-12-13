@@ -1,0 +1,218 @@
+/* ==========================================================
+ * ## IntuitSolutions.net - Variables
+
+!Important: Before you change things in this file take a step back and think about it. You shouldn't need to change these settings if you configured your config.json file correctly.
+
+1. Variables should always pull from the config.json file
+2. All custom variables should go at the top of their layout stylesheet
+3. Any custom global variables can go at the bottom of this file in the custom section. You shouldn't need to add custom variables to this sheet very often.
+
+ * ========================================================== */
+
+/* ==========================================================
+ * ## Base Theme Colors
+ * ========================================================== */
+
+$color-primary:                     stencilColor('color-primary');
+$color-primary--hover:              stencilColor('color-primary--hover');
+$color-primary--sub:                stencilColor('color-primary--sub');
+
+$color-secondary:                   stencilColor('color-secondary');
+$color-secondary--hover:            stencilColor('color-secondary--hover');
+$color-secondary--sub:              stencilColor('color-secondary--sub');
+
+$color-alt:                         stencilColor('color-alt');
+$color-alt--hover:                  stencilColor('color-alt--hover');
+$color-alt--sub:                    stencilColor('color-alt--sub');
+
+/* ==========================================================
+ * ## Font Variables
+ * ========================================================== */
+
+$fontSize-root:                     stencilNumber("fontSize-root"); // DO NOT TOUCH
+$fontSize-base:                     1rem; // DO NOT TOUCH - 1rem = root px size
+$fontSize-hero:                     50px;
+
+// - START
+// Fluid Typography on tablet to desktop needs to be updated if you're changing these values
+$fontSize-largest:                  remCalc(60px);
+$fontSize-larger:                   remCalc(38px);
+$fontSize-large:                    remCalc(26px);
+$fontSize-small:                    remCalc(23px);
+$fontSize-smaller:                  remCalc(16px);
+$fontSize-smallest:                 remCalc(12px);
+$fontSize-tiny:                     remCalc(10px);
+
+$fontSize-largest--mobile:          remCalc(33px);
+$fontSize-larger--mobile:           remCalc(28px);
+$fontSize-large--mobile:            remCalc(23px);
+$fontSize-small--mobile:            remCalc(18px);
+// - END
+
+$fontWeight-thin:                   300;
+$fontWeight-normal:                 400;
+$fontWeight-medium:                 500;
+$fontWeight-semibold:               600;
+$fontWeight-bold:                   700;
+$fontWeight-heavy:                  800;
+$fontWeight-black:                  900;
+
+$font-family--heading:              stencilFontFamily('headings-font'), Arial, Helvetica, sans-serif;
+$font-family--heading-alt:          stencilFontFamily('headings-font-alt'), Arial, Helvetica, sans-serif;
+$font-family--body:                 stencilFontFamily('body-font'), Arial, Helvetica, sans-serif;
+
+$font-color-primary:                stencilColor('color-textBase');
+$font-color-secondary:              stencilColor('color-textSecondary');
+$font-color-primary-link:           stencilColor('color-textLink');
+$font-color-primary-link--hover:    stencilColor('color-textLink--hover');
+$font-color-secondary-link:         stencilColor('color-textLink-secondary');
+$font-color-secondary-link--hover:  stencilColor('color-textLink-secondary--hover');
+
+/* ==========================================================
+ * ## Element Variables
+
+   - If you need to update heading font-family and size you can adjust the variables in the its style guide stylesheet.
+ * ========================================================== */
+
+$h1-color:                          $font-color-primary;
+$h2-color:                          $font-color-primary;
+$h3-color:                          $font-color-primary;
+$h4-color:                          $font-color-primary;
+$h5-color:                          $font-color-primary;
+$h6-color:                          $font-color-primary;
+
+$h1-font-weight:                    $fontWeight-medium;
+$h2-font-weight:                    $fontWeight-medium;
+$h3-font-weight:                    $fontWeight-normal;
+$h4-font-weight:                    $fontWeight-normal;
+$h5-font-weight:                    $fontWeight-normal;
+$h6-font-weight:                    $fontWeight-normal;
+
+$p-font-family:                     $font-family--body;
+$p-font-size:                       $fontSize-base;
+$p-font-weight:                     $fontWeight-normal;
+$p-color:                           $font-color-primary;
+
+$a-font-family:                     $font-family--body;
+$a-font-size:                       inherit;
+$a-font-weight:                     $fontWeight-normal;
+$a-color:                           $font-color-primary-link;
+$a-color--hover:                    $font-color-primary-link--hover;
+$a-text-decoration:                 none;
+$a-text-decoration--alt:            underline;
+
+$input-text-color:                  stencilColor('input-font-color');
+$input-bg-color:                    stencilColor('input-bg-color');
+$input-bg-color--focus:             stencilColor('input-bg-color-focus');
+$input-border:                      1px solid stencilColor('input-border-color');
+$input-border--focus:               1px solid stencilColor('input-border-color-focus');
+$input-border-radius:               stencilNumber('input-border-radius');
+$icon-height:                       remCalc(20px);
+$icon-width:                        remCalc(20px);
+$icon-svg-color:                    stencilColor('icon-color');
+$icon-svg-height:                   100%;
+$icon-svg-width:                    100%;
+
+/* ==========================================================
+ * ## Button Variables
+ * ========================================================== */
+
+// Primary
+$button-font-size-primary:                    $fontSize-base;
+$button-font-weight-primary:                  $fontWeight-normal;
+$button-text-color-primary:                   stencilColor('button--primary-color');
+$button-text-color-primary--hover:            stencilColor('button--primary-colorHover');
+$button-text-color-primary--active:           stencilColor('button--primary-colorActive');
+$button-bg-color-primary:                     stencilColor('button--primary-backgroundColor');
+$button-bg-color-primary--hover:              stencilColor('button--primary-backgroundColorHover');
+$button-bg-color-primary--active:             stencilColor('button--primary-backgroundColorActive');
+$button-border-color-primary:                 stencilColor('button--primary-borderColor');
+$button-border-color-primary--hover:          stencilColor('button--primary-borderColorHover');
+$button-border-color-primary--active:         stencilColor('button--primary-borderColorActive');
+$button-border-radius-primary:                stencilNumber('button--primary-borderRadius');
+$button-border-width-primary:                 1px;
+$button-border-style-primary:                 solid;
+$button-padding-primary:                      0.85714rem 2.28571rem;
+$button-text-decoration-primary--hover:       none;
+$button-text-decoration-primary--active:      none;
+
+// Secondary
+$button-font-size-secondary:                  $fontSize-base;
+$button-font-weight-secondary:                $fontWeight-normal;
+$button-text-color-secondary:                 stencilColor('button--secondary-color');
+$button-text-color-secondary--hover:          stencilColor('button--secondary-colorHover');
+$button-text-color-secondary--active:         stencilColor('button--secondary-colorActive');
+$button-bg-color-secondary:                   stencilColor('button--secondary-backgroundColor');
+$button-bg-color-secondary--hover:            stencilColor('button--secondary-backgroundColorHover');
+$button-bg-color-secondary--active:           stencilColor('button--secondary-backgroundColorActive');
+$button-border-color-secondary:               stencilColor('button--secondary-borderColor');
+$button-border-color-secondary--hover:        stencilColor('button--secondary-borderColorHover');
+$button-border-color-secondary--active:       stencilColor('button--secondary-borderColorActive');
+$button-border-radius-secondary:              stencilNumber('button--secondary-borderRadius');
+$button-border-width-secondary:               1px;
+$button-border-style-secondary:               solid;
+$button-padding-secondary:                    0.85714rem 2.28571rem ;
+$button-text-decoration-secondary--hover:     none;
+$button-text-decoration-secondary--active:    none;
+
+// Small
+$button-font-size-small:                      $fontSize-base;
+$button-font-weight-small:                    $fontWeight-normal;
+$button-border-radius-small:                  stencilNumber('button--small-borderRadius');
+$button-border-width-small:                   1px;
+$button-border-style-small:                   solid;
+$button-padding-small:                        0.57143rem 1.5rem ;
+$button-text-decoration-small--hover:         none;
+$button-text-decoration-small--active:        none;
+
+// Card Figcaption
+$button-fig-caption-width:                    100%;
+
+/* ==========================================================
+ * ## Basic Colors
+ * ========================================================== */
+
+$color-black:                   #000000;
+$color-white:                   #ffffff;
+$color-gray:                    #808080;
+$color-red:                     red;
+$color-orange:                  orange;
+$color-yellow:                  yellow;
+$color-green:                   green;
+$color-blue:                    blue;
+$color-indigo:                  indigo;
+$color-lighter:                   rgba($color-indigo, 0.5);
+$color-violet:                  violet;
+$color-pink:                    hotpink;
+$color-transparent:             rgba(255, 255, 255, 0);
+
+
+/* ==========================================================
+ * ## Container
+ * ========================================================== */
+
+$max-width: 1464px; // Max width of page to keep the nice margins
+
+/* ==========================================================
+ * ## Other
+ * ========================================================== */
+
+$primary-shadow-size: 0px 5px 6px;
+$primary-shadow: rgba($color-black, 0.4);
+$gradient-primary: linear-gradient($color-primary, darken($color-primary, 20%));
+$gradient-primary-sub: linear-gradient($color-primary, lighten($color-primary, 20%));
+$gradient-secondary: linear-gradient($color-secondary, darken($color-secondary, 20%));
+$gradient-secondary-sub: linear-gradient($color-secondary, lighten($color-secondary, 20%));
+$gradient-alt: linear-gradient($color-alt, darken($color-alt, 20%));
+$gradient-alt-sub: linear-gradient($color-alt, lighten($color-alt, 20%));
+
+
+/* ==========================================================
+ * ## CUSTOM - GLOBAL VARIABLES ONLY!!!
+
+    - If you need to add custom global variables then they should be added here. If you're only adding variables for component/page specifc styles, then they should be added to the top of their own stylesheet.
+
+ * ========================================================== */
+
+$radius-normal: 3px;
+$radius-heavy: 9px;

@@ -1,0 +1,86 @@
+
+.schematics {
+    display: grid;
+    gap: 1rem;
+
+    @include breakpoint('small') {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include breakpoint('medium') {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.schematic {
+    width: 100%;
+    padding: 1rem;
+    background-color: #ededed;
+    border-radius: $radius-heavy;
+    transition: box-shadow 0.15s, transform 0.15s;
+
+    @include breakpoint('medium') {
+        &:hover,
+        &:focus {
+            transform: translateY(-0.15rem);
+            box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.35);
+        }
+    }
+
+    @include breakpoint('small') {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+
+.schematic h3 {
+    margin: 1rem 0;
+    text-align: center;
+
+    @include breakpoint('small') {
+        margin: 0 0 auto;
+    }
+}
+
+.schematic__image {
+    flex: 1;
+}
+
+.schematic__content {
+    flex: 1;
+
+    @include breakpoint('small') {
+        // 801px and up
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .button {
+        margin-left: 0;
+        width: 100%;
+        text-transform: none;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        color: $font-color-primary;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: $color-primary--hover;
+            border-color: $color-primary--hover;
+        }
+
+        &--pdf {
+            background-color: #ffffff;
+        }
+
+        @include breakpoint('small') {
+            margin: 0;
+        }
+    }
+}

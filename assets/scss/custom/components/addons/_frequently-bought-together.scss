@@ -1,0 +1,333 @@
+// =============================================================================
+// IntuitSolutions.net - Frequently Bought Together
+// =============================================================================
+
+// big block of displsy none
+.productView-info-name.fbt,
+.productView-info-value.fbt,
+.productView-info-name.fbt-product,
+.productView-info-value.fbt-product,
+.freqBought-item .price-section.price-section--saving,
+.freqBought .form-field__sizeChart {
+    display: none;
+}
+
+#fbt {
+    display: none;
+    padding: 1.5rem 0;
+    @include clearfix();
+    position: relative;
+    clear: both;
+}
+
+.fbt__heading {
+    margin-bottom: 1.5rem;
+}
+
+.fbt__heading-text {
+    background: $body-bg;
+}
+
+/* ==========================================================
+## IMAGES
+========================================================== */
+.fbt__image-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include breakpoint('medium') {
+        flex-wrap: nowrap;
+    }
+}
+
+.fbt__image-item {
+    position: relative;
+    padding: 0 0.55rem;
+    width: 25%;
+    text-align: center;
+
+    @include breakpoint('small') {
+        width: auto;
+        padding: 0 1rem;
+    }
+}
+
+.fbt__image-item:first-child {
+    padding-left: 0;
+}
+
+.fbt__image-item.fbt__total {
+    width: 100%;
+    padding-top: 1.5rem;
+    text-align: left;
+
+    @include breakpoint('medium') {
+        padding-top: 0;
+    }
+}
+
+// plus signs between products
+.fbt__image-item::after {
+    content: ' ';
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    right: -9px;
+    top: 0;
+    bottom: 0;
+    background: url(../icons/add.svg) no-repeat;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 10; // put plus signs above product images
+
+    @include breakpoint('small') {
+        width: 24px;
+        height: 24px;
+        right: -12px;
+    }
+}
+
+.fbt__image-item.fbt__total::after,
+.fbt__image-item:nth-last-child(2)::after,
+.fbt__image-item:nth-child(4n+4)::after {
+    display: none;
+}
+
+.fbt__image-link {
+    display: inline-block;
+    opacity: 0.45;
+    transition: opacity 0.15s ease;
+}
+
+.fbt__image-item.isChecked .fbt__image-link,
+.fbt__image-item.fbt__total .fbt__image-link {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
+.fbt__image {
+    max-width: 100%;
+
+    @include breakpoint('small') {
+        max-width: 85px;
+    }
+
+    @include breakpoint('large') {
+        max-width: remCalc(192px);
+        }
+}
+
+.fbt__total-txt {
+    margin-bottom: 10px;
+}
+
+.fbt__total-price {
+    color: stencilColor('color-error');
+}
+
+/* ==========================================================
+## HELPER TEXT
+========================================================== */
+.fbt__helper-text {
+    margin: 15px 0 10px 0;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* ==========================================================
+## DETAILS
+========================================================== */
+.fbt__detail-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.fbt__detail-item {
+    margin-bottom: 0.5rem;
+}
+
+.fbt__detail-field {
+    display: inline-block;
+}
+
+// ugly selectors to override default styles
+.fbt__detail-item .form-checkbox + .form-label {
+    line-height: 22px;
+}
+
+.fbt__detail-item .form-checkbox + .form-label::before {
+    border-color: #bbb;
+    border-radius: 0;
+}
+
+.fbt__detail-item .fbt__detail-field:hover .form-checkbox + .form-label::before {
+    border-color: #989898;
+}
+
+.fbt__detail-name {
+    border-bottom: 1px solid #bbb;
+    transition: all 0.15s ease;
+}
+
+.fbt__detail-field:hover .fbt__detail-name {
+    border-color: #444;
+    transition: all 0.15s ease;
+}
+
+.fbt__detail-item .price-section,
+.fbt__detail-item .price--rrp,
+.fbt__detail-item .price--discounted,
+.fbt__detail-item .price--withoutTax {
+    display: inline-block;
+    font-weight: normal;
+}
+
+.fbt__detail-item .price-section {
+    margin-left: 5px;
+}
+
+.fbt__detail-item .price.price--withoutTax:before {
+    display: none;
+}
+
+/* ==========================================================
+## DETAIL OPTIONS
+========================================================== */
+// options
+.fbt__toggle-options {
+    position: relative;
+    display: inline-block;
+    margin: 6px 0 3px 1.85714rem;
+    padding: 1px 15px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid;
+    background-color: stencilColor('button--primary-backgroundColor');
+    color: stencilColor('button--primary-color');
+    transition: all 0.15s ease;
+
+    @include breakpoint('small') {
+        margin: 0 0 0 5px;
+    }
+}
+
+.fbt__toggle-options:hover,
+.fbt__toggle-options:focus {
+    background-color: stencilColor('button--primary-backgroundColorHover');
+    color: stencilColor('button--primary-colorHover');
+    transition: all 0.15s ease;
+}
+
+.fbt__detail-options {
+    display: none;
+    margin: 7px 0 0.25rem 1.85714rem;
+    padding: 0.75rem;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    border: 1px solid #cccccc;
+}
+
+.fbt__detail-options .form-field {
+    margin-bottom: 1rem;
+}
+
+.hasOptions--selected .fbt__detail-options {
+	background-color: #dff0d8;
+	border-color: #549955;
+}
+
+.hasOptions--error .fbt__detail-options {
+	background-color: #f8e0e4;
+	border-color: #de909e;
+}
+
+.fbt__detail-options .form-field:last-child {
+    margin-bottom: 0;
+}
+
+.fbt__detail-options .form-checkbox + .form-label {
+    line-height: 22px;
+}
+
+.fbt__detail-options .form-checkbox + .form-label::before {
+    border-color: #bbb;
+    border-radius: 0;
+}
+
+.fbt__detail-options .freqBought-label:hover .form-checkbox + .form-label::before {
+    border-color: #989898;
+}
+
+
+
+// ==============================================
+// various states
+// ==============================================
+// need to select options
+.fbt__toggle-options {
+	background-color: #f37221;
+	border-color: #f37221;
+	color: #fff;
+}
+
+.fbt__toggle-options:hover {
+	background-color: #CC6228;
+	border-color: #CC6228;
+}
+
+// options are good
+.hasOptions--selected .fbt__toggle-options,
+.hasOptions--selected .fbt__toggle-options:hover  {
+	background-color: #dff0d8;
+	border-color: #3c763d;
+	color: #383838;
+}
+
+.hasOptions--selected .fbt__toggle-options {
+	padding-right: 30px;
+}
+
+.hasOptions--selected .fbt__toggle-options::after {
+	content: "";
+	display: inline-block;
+	background: url('../icons/check-green.svg');
+	background-size: cover;
+	position: absolute;
+	right: 8px;
+	top: 1px;
+	height: 17px;
+	width: 17px;
+}
+
+
+
+
+
+// error with options
+.freqBought-item.hasOptions-error .freqBought-itemOptions,
+.freqBought-item.hasOptions-error .fbt__toggle-options {
+	background-color: #f8e0e4;
+	border-color: #de909e;
+}
+
+.freqBought-errorMsg {
+	display: none;
+	margin: 0;
+	padding: 0.75rem;
+	font-size: 1rem;
+	font-weight: 600;
+	text-align: center;
+	background-color: #f8e0e4;
+	color: #a94442;
+}
+
+.freqBought-item.hasOptions-error .freqBought-errorMsg {
+	display: block;
+}

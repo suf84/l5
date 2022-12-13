@@ -1,0 +1,75 @@
+/* ==========================================================
+## IntuitSolutions.net - Add to Cart upsell
+========================================================== */
+
+// hacky fix foundation modal (test me in other browsers)
+#previewModal {  
+    overflow: auto;
+}
+
+#previewModal .modal-body.modal-body--wf {
+    overflow: initial;
+}
+
+.productView-info-name.atc-product,
+.productView-info-value.atc-product {
+    display: none;
+}
+
+.modal-header-actions {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.modal-body--wf {
+    padding: 1rem;
+
+    @include breakpoint("medium") { // 801px and up
+        padding: 1.5rem 2.25rem 2.25rem;
+        min-height: 560px;
+    }
+}
+
+.modal-body--wf .heading {
+    text-align: center;
+}
+
+.productGrid .wf__product {
+    width: 100%;
+
+    @include breakpoint("medium") { // 801px and up
+        width: 50%;
+    }
+
+    @include breakpoint("large") { // 801px and up
+        width: 25%;
+    }
+}
+
+.wf__product .card-options .form-field:last-child {
+    margin-bottom: 0;
+}
+
+.wf__product .card-body {
+    text-align: center;
+}
+
+.wf__product .price-section--saving {
+    display: none;
+}
+
+.wf__product .card-actions {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.wf__product .form-field,
+.wf__product .button--primary {
+    width: 100%;
+}
+
+.wf__product .button--success{
+	background-color: #549955;
+	border-color: #549955;
+	color: #fff;
+}

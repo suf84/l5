@@ -1,0 +1,19 @@
+{{#each this.product.reviews.list}}
+    <li class="productReview">
+        <article>
+            <header class="productReview-header">
+                <div class="productReview-info">
+                    <h3 class="productReview-title">{{{ sanitize title }}}</h3>
+                    <p class="productReview-date">
+                        {{{lang 'products.reviews.post_on_by' date=date}}}
+                    </p>
+                </div>
+                <div class="productReview-rating rating--small">
+                    {{> components/products/ratings rating=rating}}
+                    <span class="productReview-ratingNumber">{{ rating }}</span>
+                </div>
+            </header>
+            <p class="productReview-body">{{{ sanitize text }}}</p>
+        </article>
+    </li>
+{{/each}}

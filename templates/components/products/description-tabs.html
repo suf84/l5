@@ -1,0 +1,30 @@
+<div class="tabs-wrapper">
+    <ul class="container tabs" data-tab>
+        {{#if product.description}}
+            <li class="tab is-active">
+                <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
+            </li>
+        {{/if}}
+        {{#if product.warranty}}
+            <li class="tab {{#unless product.description}}is-active{{/unless}} tab--warranty">
+                <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+            </li>
+        {{/if}}
+    </ul>
+</div>
+
+<div class="tabs-contents">
+    {{#if product.description}}
+        <div class="tab-content tab-content--description is-active" id="tab-description">
+            <div class="container">
+                {{{product.description}}}
+            </div>
+        </div>
+    {{/if}}
+
+    {{#if product.warranty}}
+        <div class="container tab-content tab-content--warranty {{#unless product.description}}is-active{{/unless}}" id="tab-warranty">
+            {{{product.warranty}}}
+        </div>
+    {{/if}}
+</div>

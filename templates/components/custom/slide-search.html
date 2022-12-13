@@ -1,0 +1,28 @@
+<a  class="navUser-action slide-search-open">
+    <span class="navUser-item-cartLabel">{{lang 'common.search'}}</span>
+</a>
+<!-- <form class="form" onsubmit='return false' data-url="{{urls.search}}" action="">
+    <fieldset class="form-fieldset">
+        <div class="form-field">
+            <label class="is-srOnly" for="{{name}}">{{lang "search.quick_search.input_label"}}</label>
+            <input class="form-input"
+                   data-search-quick
+                   name="{{name}}"
+                   id="{{name}}"
+                   data-error-message="{{lang 'search.error.empty_field'}}"
+                   placeholder="{{lang 'search.quick_search.input_placeholder'}}"
+                   autocomplete="off"
+            >
+        </div>
+    </fieldset>
+</form> -->
+
+<div id="slideSearch" class="slide-search-container" aria-hidden="true" data-prevent-quick-search-close>
+    <button class="slide-search-close modal-close" type="button" title="{{lang 'common.close'}}">
+        <span class="aria-description--hidden">{{lang 'common.close'}}</span>
+        <span aria-hidden="true">&#215;</span>
+    </button>
+    <div class="slide-search">
+        {{> components/common/quick-search name='nav-quick-search'}}
+    </div>
+</div>

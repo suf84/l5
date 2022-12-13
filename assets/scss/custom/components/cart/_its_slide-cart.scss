@@ -1,0 +1,80 @@
+/* ==========================================================
+ * ## I don't think you need any of this but do need to style the cart items.
+ * ========================================================== */
+// .slide-cart {
+//     height: 100vh;
+//     width: 0;
+//     position: fixed;
+//     z-index: zIndex('high');
+//     top: 0;
+//     right: 0;
+//     background-color: $dropdown--quickSearch-backgroundColor;
+//     padding-top: 60px;
+//     transition: 0.5s;
+// }
+
+// .slide-cart__container {
+//     display: none;
+// }
+
+// .slide-cart .modal-close {
+//     position: absolute;
+//     left: 0.75rem;
+//     right: auto;
+//     font-size: 36px;
+
+//     &::before, &::after {
+//         right: auto;
+//         left: 0;
+//     }
+// }
+
+// .slide-cart .previewCartAction-checkout,
+// .slide-cart .previewCartAction-viewCart {
+//     width: 100%;
+//     padding: 0;
+// }
+
+// .slide-cart #cart-preview-dropdown {
+//     display: none;
+//     left: 0 !important;
+// }
+
+// .slide-cart.slide-cart--open {
+//     width: 300px;
+
+//     & #cart-preview-dropdown {
+//         display: block;
+//     }
+// }
+
+// .slide-cart .loadingOverlay {
+//     position: absolute;
+//     height: 100vh;
+//     width: 300px;
+//     background-color: transparent;
+// }
+
+// .slide-cart .previewCartWrapper {
+//     max-height: none;
+// }
+
+// .slide-cart .previewCartAction {
+//     position: absolute;
+//     bottom: 0;
+// }
+
+
+/* ==========================================================
+ * ## Needed
+ * ========================================================== */
+
+// Needed for initial page load
+.slide-cart-container {
+    display: none;
+}
+
+// Needed for after the mmenu package moves the container
+.mm-ocd .slide-cart-container {
+    display: block;
+}

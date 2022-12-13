@@ -1,0 +1,27 @@
+{{assignVar 'bds-percentageOff' 0}}
+
+{{#each product.category}}
+    {{#contains this "Boxing Day Sale/"}}
+        {{assignVar 'bds-amount' (toInt (last (split this '/')))}}
+
+        {{#if (getVar 'bds-percentageOff') '<' (getVar 'bds-amount')}}
+            {{assignVar 'bds-percentageOff' (getVar 'bds-amount')}}
+        {{/if}}
+    {{/contains}}
+{{/each}}
+
+{{!--  Maths:  parseFloat(((100 - bds-percentageOff) * 0.01 * price).toFixed(2)) --}}
+
+{{#if (getVar 'bds-percentageOff') '!==' 0}}
+    <div class="pdp-banner pdp-banner--sale" data-percentage-off="{{getVar 'bds-percentageOff'}}">
+        <p class="pdp-banner__heading h2">{{lang 'custom.product.sale-banner.heading'}}</p>
+        <p class="pdp-banner__text">{{lang 'custom.product.sale-banner.text' percentageOff=(add (getVar 'bds-percentageOff') '%')}}</p>
+    </div>
+{{/if}}
+
+{{#if product.out_of_stock}}
+    <div class="pdp-banner pdp-banner--sold-out">
+        <p class="pdp-banner__heading h2">{{lang 'custom.product.sold-out-banner.heading'}}</p>
+        <p class="pdp-banner__text">{{{lang 'custom.product.sold-out-banner.text'}}}</p>
+    </div>
+{{/if}}

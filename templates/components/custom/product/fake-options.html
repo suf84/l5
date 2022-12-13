@@ -1,0 +1,48 @@
+{{assignVar 'productId' product.id}}
+
+{{#contains (toLowerCase (join (pluck product.custom_fields 'name') ',')) '__product-option|'}}
+    <div class="pdp-fake-options">
+        <p class="pdp-fake-options__heading h5">{{lang 'custom.product.fake-options.heading'}}</p>
+        <ul class="pdp-fake-options__button-container" data-tab>
+        {{#each product.custom_fields}}
+            {{#contains (toLowerCase name) "__product-option|"}}
+                {{assignVar 'fo-name' (trim (last (split name '|')))}}
+
+                <li class="tab {{#contains value (getVar 'productId')}}is-active{{/contains}}">
+                    <a
+                        href="#option-{{dashcase (getVar 'fo-name')}}"
+                        class="button button--secondary button--small pdp-fake-options__button"
+                        data-option-button="option-{{dashcase (getVar 'fo-name')}}"
+                    >
+                    {{getVar 'fo-name'}}</a>
+                </li>
+            {{/contains}}
+        {{/each}}
+        </ul>
+        <div class="pdp-fake-options__card-container">
+        {{#each product.custom_fields}}
+            {{#contains (toLowerCase name) "__product-option|"}}
+                <ul
+                    id="option-{{dashcase (trim (last (split name '|')))}}"
+                    class="pdp-fake-options__card-list {{#contains value (getVar 'productId')}}is-active{{/contains}}"
+                    data-option-product-ids="{{value}}"
+                >
+                    {{#each (split value ',')}}
+                        <li
+                            class="pdp-fake-options__card-item {{#if (trim this) '===' (getVar 'productId')}}pdp-fake-options__card-item--active{{/if}}"
+                            data-option-product-id="{{trim this}}"
+                        >
+                            <a href="" class="pdp-fake-options__card-link js-fake-opt-link skeleton-loading">
+                                <figure class="pdp-fake-options__card-img-container">
+                                    <img class="pdp-fake-options__card-img js-fake-opt-img" src="{{cdn 'img/loading.svg'}}">
+                                    <figcaption class="pdp-fake-options__card-title js-fake-opt-title"></figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/contains}}
+        {{/each}}
+        </div>
+    </div>
+{{/contains}}

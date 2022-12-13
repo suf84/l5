@@ -1,0 +1,45 @@
+{{#if is_ajax}}
+	<li class="fbt__detail-item isChecked {{#if product.options}}hasOptions hasOptions--loaded{{/if}}" data-product-id="{{product.id}}">
+		<form method="post" action="/cart.php" enctype="multipart/form-data">
+			<input type="hidden" name="action" value="add">
+			<input type="hidden" name="product_id" value="{{product.id}}" />
+			<input type="hidden" name="qty[]" value="1" />
+			<div class="fbt__detail-field">
+				<input class="fbt__detail-checkbox form-checkbox" type="checkbox" name="fbt__product{{product.id}}" id="fbt__product{{product.id}}"
+				checked>
+				<label class="fbt__detail-label form-label" for="fbt__product{{product.id}}">
+					<span class="fbt__detail-name">{{product.title}}</span>
+					{{> components/products/price price=product.price bdsp_search_items=product.category}}
+				</label>
+			</div>
+			{{#if product.options}}
+			<div class="fbt__toggle-options">Choose Options</div>
+			<div class="fbt__detail-options" data-freq-option-change>
+				<div class="fbt__detail-options-error"></div>
+			</div>
+			{{/if}}
+		</form>
+	</li>
+{{else}}
+	<li class="fbt__detail-item isChecked {{#if has_options}}hasOptions{{/if}}" data-product-id="{{product.id}}">
+		<form method="post" action="/cart.php" enctype="multipart/form-data">
+			<input type="hidden" name="action" value="add">
+			<input type="hidden" name="product_id" value="{{product.id}}" />
+			<input type="hidden" name="qty[]" value="1" />
+			<div class="fbt__detail-field">
+				<input class="fbt__detail-checkbox form-checkbox" type="checkbox" name="fbt__product{{product.id}}" id="fbt__product{{product.id}}"
+				checked>
+				<label class="fbt__detail-label form-label" for="fbt__product{{product.id}}">
+					<span class="fbt__detail-name">{{product.name}}</span>
+					{{> components/products/price price=product.price bdsp_search_items=product.category}}
+				</label>
+			</div>
+			{{#if has_options}}
+			<div class="fbt__toggle-options">Choose Options</div>
+			<div class="fbt__detail-options" data-freq-option-change>
+				<div class="fbt__detail-options-error"></div>
+			</div>
+			{{/if}}
+		</form>
+	</li>
+{{/if}}

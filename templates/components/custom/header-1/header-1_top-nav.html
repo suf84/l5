@@ -1,0 +1,159 @@
+<nav class="header-1__top-nav">
+    <ul class="header-1__top-nav-list">
+        {{!-- {{#for 1 (lang 'custom.header.top-navigation.number-of-links')}}
+        <li class="header-1__top-nav-list-item">
+            <a href="{{lang (concat (concat 'custom.header.top-navigation.link-'$index)'.link')}}"
+                class="header-1__top-nav-list-link">
+                {{!lang (concat (concat 'custom.header.top-navigation.link-'$index)'.text')}}
+            </a>
+        </li>
+        {{/for}} --}}
+        <li class="header-1__top-nav-list-item">
+            <a href="{{urls.gift_certificate.purchase }}" class="header-1__top-nav-list-link">
+                {{lang 'custom.header.top-navigation.link-1.text'}}
+            </a>
+        </li>
+        {{#if customer}}
+        <li class="header-1__top-nav-list-item account-link">
+                <a class="navUser-action"
+                   href="{{urls.account.index}}"
+                   aria-label="{{lang 'common.account'}}"
+                   data-dropdown="account-dropdown"
+                >
+                <span class="header-1__top-nav-list-link">
+                    {{lang 'common.account'}}
+                </span>
+                </a>
+
+                <div class="dropdown-menu header-1__top-account-dropdown" id="account-dropdown" data-dropdown-content aria-hidden="true">
+                    <ul class="header-1__top-account-list">
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                               href="{{urls.account.orders.all}}"
+                               aria-label="{{lang 'account.nav.orders'}}"
+                            >
+                                {{lang 'account.nav.orders'}}
+                            </a>
+                        </li>
+                        {{#if settings.returns_enabled}}
+                            <li class="header-1__top-account-list-item">
+                                <a class="header-1__top-account-list-item-link"
+                                   href="{{urls.account.returns}}"
+                                   aria-label="{{lang 'account.nav.returns'}}"
+                                >
+                                    {{lang 'account.nav.returns'}}
+                                </a>
+                            </li>
+                        {{/if}}
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                               href="{{urls.account.inbox}}"
+                               aria-label="{{lang 'account.mobile_nav.messages'}}"
+                            >
+                                {{lang 'account.mobile_nav.messages'}}
+                            </a>
+                        </li>
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                               href="{{urls.account.addresses}}"
+                               aria-label="{{lang 'account.nav.addresses'}}"
+                            >
+                                {{lang 'account.nav.addresses'}}
+                            </a>
+                        </li>
+                        {{#if settings.show_payment_methods}}
+                            <li class="header-1__top-account-list-item">
+                                <a class="header-1__top-account-list-item-link"
+                                   href="{{urls.account.payment_methods.all}}"
+                                   aria-label="{{lang 'account.nav.payment_methods'}}"
+                                >
+                                    {{lang 'account.nav.payment_methods'}}
+                                </a>
+                            </li>
+                        {{/if}}
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                               href="{{urls.account.wishlists.all}}"
+                               aria-label="{{lang 'account.mobile_nav.wishlists'}}"
+                            >
+                                {{lang 'account.mobile_nav.wishlists'}}
+                            </a>
+                        </li>
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                               href="{{urls.account.recent_items}}"
+                               aria-label="{{lang 'account.nav.recently_viewed'}}"
+                            >
+                                {{lang 'account.nav.recently_viewed'}}
+                            </a>
+                        </li>
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                               href="{{urls.account.details}}"
+                               aria-label="{{lang 'account.nav.settings'}}"
+                            >
+                                {{lang 'account.nav.settings'}}
+                            </a>
+                        </li>
+                        <li class="header-1__top-account-list-item">
+                            <a class="header-1__top-account-list-item-link"
+                            href="{{urls.auth.logout}}"
+                            aria-label="{{lang 'common.logout'}}"
+                            >
+                                {{lang 'common.logout'}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </li>
+        {{else}}
+        <li class="header-1__top-nav-list-item">
+            <a href="{{urls.auth.login}}" class="header-1__top-nav-list-link login-link">
+                {{lang 'custom.header.top-navigation.link-2.text'}}
+            </a>
+            <a href="{{urls.auth.create_account}}" class="header-1__top-nav-list-link">
+                {{lang 'custom.header.top-navigation.link-3.text'}}
+            </a>
+        </li>
+        {{/if}}
+        <li class="header-1__top-nav-list-item">
+            <a href="{{lang 'custom.header.top-navigation.link-5.link'}}" class="header-1__top-nav-list-link">
+                {{lang 'custom.header.top-navigation.link-5.text'}}
+            </a>
+        </li>
+        <li class="header-1__top-nav-list-item">
+            <a href="/blog/" class="header-1__top-nav-list-link">
+                {{lang 'custom.header.top-navigation.link-6.text'}}
+            </a>
+        </li>
+        {{!-- {{#if currency_selector.currencies.length '>' 1}}
+        <li class="header-1__top-nav-list-item">
+            <a class="navUser-action navUser-action--currencySelector has-dropdown" href="#"
+                data-dropdown="currencySelection" aria-controls="currencySelection" aria-expanded="false">
+                <span class="currency-flag {{lang 'common.currency' code=currency_selector.active_currency_code}}">
+                    {{{currency_selector.active_currency_flag}}}
+                </span>
+                {{!lang 'common.currency' code=currency_selector.active_currency_code}}
+                <i class="icon" aria-hidden="true">
+                    <svg>
+                        <use xlink:href="#icon-chevron-down" />
+                    </svg>
+                </i>
+            </a>
+            <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
+                {{#each currency_selector.currencies}}
+                <li class="dropdown-menu-item">
+                    <a class="dropdown-menu-link" href="{{{switch_url}}}">
+                        {{#if is_active}}
+                        {{{flag}}}<strong>{{code}}</strong>
+                        {{else}}
+                        {{{flag}}}{{code}}
+                        {{/if}}
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+        </li>
+        {{/if}} --}}
+    </ul>
+</nav>

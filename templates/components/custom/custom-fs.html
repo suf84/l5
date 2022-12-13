@@ -1,0 +1,38 @@
+<nav class="custom-fs__nav">
+    {{#any facets visible=true}}
+    <ul class="custom-fs__list">
+        <li class="custom-fs__list-item">
+            <a data-value="__product-tag=all" class="button button--facet {{#unless facets.[0].selected}} button--primary {{/unless}}">All</a>
+        </li>
+        {{#each facets}}
+        {{#if this.facet '===' '__product-tag'}}
+        {{#each items}}
+        <li class="custom-fs__list-item">
+            <a data-value="{{param_name}}={{param_value}}"class="button button--facet {{#if selected}} button--primary is-selected{{/if}}" rel="nofollow">
+                {{{title}}}
+            </a>
+        </li>
+        {{/each}} 
+        {{/if}}
+        {{/each}}
+    </ul>
+    {{/any}}
+</nav>
+
+<form class="actionBar category-facets" method="get" data-sort-by="product">
+    <fieldset class="form-fieldset actionBar-section">
+        <div class="form-field">
+            <label class="form-label" for="sort">Type:</label>
+            <select class="form-select form-select--small categoryPage" name="__product-tag" id="sort" role="listbox">
+                <option value="all" {{#if selected "===" false}} selected{{/if}}>All</option>
+                {{#each facets}}
+                {{#if this.facet '===' '__product-tag'}}
+                {{#each items}}
+                <option value="{{category.url}}{{param_value}}" {{#if selected}}selected{{/if}}>{{title}}</option>
+                {{/each}}
+                {{/if}}
+            {{/each}}
+            </select>
+        </div>
+    </fieldset>
+</form>

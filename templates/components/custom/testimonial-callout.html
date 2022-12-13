@@ -1,0 +1,46 @@
+<section class="container testimonialCarousel"
+    data-list-name="{{list}}"
+    data-slick='{
+        "infinite": false,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "slide": "[data-testimonial-slide]",
+        "dots": false,
+        "arrows": false,
+        "infinite": true,
+        "autoplay": true,
+        "autoplaySpeed": 8000,
+        "fade": true,
+        "cssEase": "linear",
+        "speed": 300,
+        "swipe": false
+    }'
+>
+
+{{#for 1 (lang 'custom.home.testimonial-callout.number-of-callouts')}}
+    <div data-testimonial-slide>
+        <blockqoute>
+
+            <p class="h3">
+                <span class="icon icon--qoute">
+                    <svg><use xlink:href="#icon-qoute"></use></svg>
+                </span>
+                {{lang (concat (concat 'custom.home.testimonial-callout.callout-' $index) '.text')}}
+                <cite>
+                    {{~lang (concat (concat 'custom.home.testimonial-callout.callout-' $index) '.name')~}}
+                    {{#if (isString (lang (concat (concat 'custom.home.testimonial-callout.callout-' $index) '.middle-bits')))}}
+                        {{~lang (concat (concat 'custom.home.testimonial-callout.callout-' $index) '.middle-bits')}}
+                    {{else}}
+                        {{~trim ','}}
+                    {{/if}}
+                    <a href="{{lang (concat (concat 'custom.home.testimonial-callout.callout-' $index) '.link')}}">
+                        {{~lang (concat (concat 'custom.home.testimonial-callout.callout-' $index) '.link-text')~}}
+                    </a>
+                </cite>
+            </p>
+        </blockqoute>
+    </div>
+{{/for}}
+
+</section>

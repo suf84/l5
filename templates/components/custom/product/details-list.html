@@ -1,0 +1,9 @@
+<div>
+    <ul class="product-details-list">
+        {{#filter product.custom_fields '__product-details' property='name'}}
+            <li>
+                {{{value}}}
+            </li>
+        {{/filter}}
+    </ul>
+</div>

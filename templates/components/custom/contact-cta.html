@@ -1,0 +1,19 @@
+<section class="container contact-cta {{#if show_heading}} contact-cta--has-heading{{/if}}" data-contact-cta-theme="{{theme}}">
+    {{#if show_heading}}
+        <h2 class="contact-cta-heading h4">
+            {{lang 'custom.other.contact-cta.heading'}}
+        </h2>
+    {{/if}}
+    <div class="contact-cta__container">
+        {{#for 1 (lang 'custom.other.contact-cta.number-of-ctas')}}
+            <article class="contact-card">
+                <a href="{{lang (concat (concat 'custom.other.contact-cta.cta-'$index)'.phone-number-link')}}" class="contact-card__link">
+                    <h1 class="contact-card__heading h3">
+                        {{lang (concat (concat 'custom.other.contact-cta.cta-'$index)'.phone-number')}}
+                    </h1>
+                    <p class="contact-card__text">{{lang (concat (concat 'custom.other.contact-cta.cta-'$index)'.text')}}</p>
+                </a>
+            </article>
+        {{/for}}
+    </div>
+</section>

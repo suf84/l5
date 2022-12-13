@@ -1,0 +1,152 @@
+.page--default .body {
+margin: 0;
+margin-bottom: 3rem;
+}
+
+.body {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    @include breakpoint('small'){
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .body {
+        margin-top:1rem;
+    }
+}
+
+/* ==========================================================
+ * ## Hero Carousel
+ * ========================================================== */
+
+ .heroCarousel {
+     margin-bottom: 0;
+ }
+
+.heroCarousel-slide .heroCarousel-image {
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-height: 480px) {
+    .heroCarousel-slide .heroCarousel-image {
+        max-height:300px;
+    }
+    
+    .heroCarousel {
+        max-height:300px;
+    }
+}
+
+.heroCarousel-content {
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    bottom: 10rem;
+    top: auto;
+    transform: none;
+    padding: 1rem;
+    max-width: calc(#{$max-width} + 1rem * 2);
+
+    @include breakpoint('small') {
+        bottom: 2rem;
+    }
+
+    @include breakpoint('medium') {
+        padding: 1.5rem;
+        max-width: calc(#{$max-width} + 1.5rem * 2);
+    }
+}
+
+.heroCarousel-content-wrapper {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: $radius-normal;
+    background-color: rgba(255, 255, 255, 0.9);
+
+    @include breakpoint('small') {
+        text-align: left;
+        display: grid;
+        gap: 1rem;
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+.heroCarousel-content-text-wrapper {
+    flex: 1;
+}
+
+.heroCarousel-content-button-wrapper {
+    .heroCarousel-action {
+        padding: 1.375rem 4.125rem;
+    }
+    @include breakpoint('small') {
+        text-align: right;
+        grid-row: 1;
+        grid-column-start: 2;
+        .heroCarousel-action {
+            margin: 0;
+        }
+    }
+}
+
+.heroCarousel-title {
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    @include breakpoint('medium') {
+        line-height: 0.6;
+    }
+}
+
+.heroCarousel-description {
+    font-style: italic;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+
+.heroCarousel-content {
+    display:none;
+}
+
+/* ==========================================================
+ * ## Product Carousels
+ * ========================================================== */
+
+.product-carousel__container {
+    padding: 3rem 1rem;
+    @include breakpoint('medium') {
+        padding: 3rem 6rem;
+    }
+
+    .product-carousel__header {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .page-heading {
+        margin: 0 0 1rem 0;
+    }
+
+    .product-carousel__sublink {
+        text-transform: uppercase;
+    }
+}
+
+/* ==========================================================
+ * ## Home
+ * ========================================================== */
+
+
+
+@media (max-width: 480px) {
+    .heroCarousel-slide a.heroCarousel-image-wrapper {
+        min-height: 66vh;
+    }
+}
+
+
+
+

@@ -1,0 +1,1 @@
+{"components/common/modal/search-results-close-btn":"<button class=\"search-results-close\" type=\"button\" title=\"{{lang 'common.close'}}\" data-drop-down-close>\n    <span class=\"aria-description--hidden\">{{lang 'common.close'}}</span>\n    <span aria-hidden=\"true\">&#215;</span>\n</button>\n"}

@@ -1,0 +1,347 @@
+
+.heroCarousel-title-last.h3 {
+    font-weight: 400;
+    font-size: 2.4rem;
+}
+
+@media (min-width: 1025px) {
+.heroCarousel-title {
+    line-height: .9;
+}}
+
+.heroCarousel-title {
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.heroCarousel-description {
+    font-style: italic;
+    font-size: 1.4rem;
+}
+
+.heroCarousel-content-wrapper {
+    background-color: #ffffffde;
+}
+
+.heroCarousel-content-button-wrapper .heroCarousel-action {
+    padding: 1.7rem 3.5rem;
+    font-size: 1.4rem;
+}
+
+.heroCarousel-content-wrapper {
+    text-align: left;
+    padding: 1.8rem;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,.9);
+}
+
+.container.hh {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+	height: 60vh;
+	min-height: 400px;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
+
+@media (min-width: 1025px) {
+.product-carousel__container {
+    padding: 3rem 3.25rem;
+}} /* Will need to adjust carousel card width */
+
+a.home-bottom-card.home-bottom-card--giveaway:hover {
+    text-decoration: none;
+}
+
+.card-body .card-action-wrapper {
+    padding: 0.75rem;
+    left: 0;
+	bottom: 0;
+}
+
+.home-bottom-card {
+    border-radius: 6px;
+}
+
+.home-columns.blog {
+	border-radius:0;
+}
+
+.mask-6 {
+	border-radius:6px;
+}
+
+.card:hover {
+box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .20%)!important;}
+
+@include breakpoint('large') {
+.pdp-template .pdp-template__section:nth-child(2) .pdp-template__content {
+    padding: 2rem 0 4rem 4rem;
+}}
+
+.blog-post__card {
+	margin: 0;
+}
+
+.form-input.dropdown {
+	-webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+}
+
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .mobile-menu::-webkit-scrollbar-track, .mobile-menu::-webkit-scrollbar {
+    display:none!important;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.10); 
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background: #b8000d; 
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.10); 
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255,0,0,0.4); 
+  }
+  
+blockquote {
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.breadcrumbs a {
+    font-weight: 300;
+    font-size: .8rem;
+}
+
+.card-body .card-title a {
+    font-size: .8rem;
+    font-weight: 300;
+}
+
+.card-body .card-text--extra {
+    font-weight: 300;
+    font-size: .7rem;
+    margin-bottom:0;
+    
+}
+
+section.productView-details.product-options p {
+    font-weight: 300;
+}
+
+.pdp-template p {
+    font-weight: 300;
+}
+
+.klarna-btn-div {
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0.06);
+    padding:10px;
+    display: inline-block;
+    margin-bottom:12px;
+}
+
+.klarna-btn-div:hover {
+    text-decoration-color: none;
+}
+
+.klarna-btn {
+    position: relative;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: #f6adc0;
+    margin-right:12px;
+}
+
+.klarna-img {
+    height: 12px;
+}
+
+.modal-klarna {
+    overflow: auto;
+    padding: 0 2rem;
+}
+
+.productView-options {
+    margin-bottom:1rem;
+}
+
+@media (max-width: 768px) {
+.form-wishlist {
+    margin-top:16px;
+}}
+
+.sale-link {
+text-align: center;
+}
+
+.sale-link:hover {
+text-decoration: none;
+}
+
+h2.sale-heading-1 {
+    margin-top: 0;
+    color: #cf3;
+    font-size: 80px;
+    line-height: 1!important;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -1.5px;
+    margin-bottom: 0;
+    text-decoration: none!important;
+}
+
+h2.sale-heading-2 {
+    font-size: 56px;
+    font-weight: 500;
+    margin-top: 0;
+    line-height: 1!important;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.heroCarousel-slide .heroCarousel-image {
+    -o-object-position: top;
+    object-position: top;
+}
+
+.productView-thumbnails img {
+    border-radius:9px;
+}
+
+.productView .productView-price {
+    margin-bottom: 1rem;
+}
+
+.productView-options .form {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+.button.finance {
+width:100%;
+}}
+
+.productView-options .form-field {
+    margin-bottom:1rem;
+}
+
+.pdp-banner--sale {
+    margin: 0 0 1rem 0;
+}
+
+.pdp-banner {
+    padding: 10px;
+}
+
+.home-bottom-card__item-image img {
+
+    max-height: 120px;
+    border-radius: 6px;
+}
+
+.heroCarousel-content-wrapper {
+    text-align: center;
+    padding: 0;
+    border-radius: 6px;
+    display: block;
+    background-color: #ffffff00;
+}
+
+.heroCarousel-title-full.h1 {
+        font-size: 6.75rem;
+    font-weight: 700;
+    color: #9de700;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+@media (max-width: 1000px) {
+.heroCarousel-title-full.h1 {
+    font-size: 3.5rem;
+}
+    
+    .heroCarousel-description {
+            font-size: 2.5rem;
+    }
+}
+
+.heroCarousel-description {
+    line-height:1.1;
+    font-style: initial;
+    font-weight: 700;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 3rem;
+    font-family: Oswald,Arial,Helvetica,sans-serif;
+}
+
+
+.heroCarousel-content {
+    top:0;   
+    display: block;
+}  
+
+.custom-fs__nav {
+    display:none!important;
+}
+
+@media (max-width: 768px) {
+.add-to-cart-action__wrapper {
+        margin-bottom: 1rem;
+}        
+}
+
+.modal {
+    overflow:auto;
+}
+
+.pdp-banner .pdp-banner__heading {
+    font-size:1.7rem;
+}
+
+.price-section.price-section--withoutTax.price-range {
+    display: none;
+}
+
+.price-range span.price.price--rrp {
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.price-section.price-section--withoutTax.rrp-price--withoutTax.price-range {
+    display: block;
+    font-family: Oswald,Arial,Helvetica,sans-serif;
+}
+
+.price-section.price-section--withoutTax.rrp-price--withoutTax.price-range span:first-child {
+    display: none;
+} 
+
+span.price.price--rrp.h5 {
+    font-weight:300;
+}
+
+.actionBar.category-facets {
+ display:none;   
+}

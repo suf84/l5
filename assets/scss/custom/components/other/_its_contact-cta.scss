@@ -1,0 +1,110 @@
+/* ==========================================================
+ * ## Default
+    - To add another theme just pass in the name you want to use with the component.
+    - {{> components/custom/contact-cta theme="theme-name" show_heading=true}}
+    - [data-contact-cta-theme="theme-name"]
+    - then you can follow the structure found in the other themes
+ * ========================================================== */
+
+.contact-cta {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    @include breakpoint('medium') {
+        padding: 3rem 6rem;
+    }
+}
+
+.contact-cta.contact-cta--has-heading {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @include breakpoint('medium') {
+        padding: 2rem 6rem 3rem;
+    }
+}
+
+.contact-cta-heading {
+    display: none;
+    font-family: $font-family--body;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+
+    @include breakpoint('small') {
+        display: block;
+    }
+}
+
+.contact-cta__container {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 1rem;
+
+    @include breakpoint('small') {
+        flex-flow: row wrap;
+        gap: 1.5rem;
+    }
+}
+
+.contact-card {
+    position: relative;
+    text-align: center;
+    flex: 1;
+
+    a.contact-card__link {
+        display: block;
+        padding: 1rem;
+        color: inherit;
+        text-decoration: inherit;
+        border: 1px solid #d3d3d3;
+        transition: all linear 0.15s;
+        background-color: $color-white;
+
+        &:hover,
+        &:focus {
+            color: $color-white;
+            border-color: $color-primary;
+            background-color: $color-primary;
+        }
+    }
+}
+
+.contact-card__heading,
+.contact-card__text {
+    margin: 0;
+    color: inherit;
+}
+
+/* ==========================================================
+ * ## Homepage Theme
+ * ========================================================== */
+
+[data-contact-cta-theme="home"] {
+
+    .contact-cta-heading {
+        color: $color-white;
+    }
+
+    .contact-card {
+        a.contact-card__link {
+            background-color: rgba(220, 0, 0, 0.6);
+            &:hover,
+            &:focus {
+                border-color: $color-white;
+                background-color: rgba(220, 0, 0, 1);
+            }
+        }
+    }
+
+    .contact-card__heading,
+    .contact-card__text {
+        color: $color-white;
+    }
+}
+
+/* ==========================================================
+ * ## Footer Theme
+ * ========================================================== */

@@ -1,0 +1,23 @@
+<div class="modal-body modal-body--wf">
+	<h2 class="modal-header-title">
+		{{lang 'cart.added_to_cart.what_next' num_products=cart.added_item.quantity}}
+	</h2>
+	<div class="modal-header-actions">
+		<a class="button button--alt" href="{{urls.cart}}">
+			View Cart
+		</a>
+
+		<a href="#" class="button button--alt" role="button" data-reveal-close>
+			{{lang 'cart.added_to_cart.continue_shopping'}}
+		</a>
+
+		{{#if cart.show_primary_checkout_button}}
+		<a class="button button--primary" href="{{urls.checkout.single_address}}">
+			{{lang 'cart.added_to_cart.proceed_to_checkout'}}
+		</a>
+		{{/if}}
+	</div>
+
+	<h2 class="heading"><span>You May Also Like...</span></h2>
+	<ul class="productGrid wf__productlist" id="wf__productlist"></ul>
+</div>

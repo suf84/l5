@@ -1,0 +1,38 @@
+.page--wishlist .productGrid ,.page--account .productGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 -0.75rem;
+    
+    @include breakpoint('xsmall') {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint('small') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint('medium') {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &::before,
+    &::after {
+        display: none;
+    }
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    &>.form-field {
+        clear:none; 
+        float: none;
+        &[data-type] {
+            order: 2
+        }
+    }
+}
+
+.form-row:before,.form-row::after {
+    display: none;
+}

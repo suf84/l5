@@ -1,0 +1,65 @@
+<div id="fbt">
+  <h2 class="fbt__heading page-heading">
+    <span class="fbt__heading-text">Frequently Bought Together</span>
+  </h2>
+
+  <ul class="fbt__image-list">
+    <li class="fbt__image-item isChecked" data-product-id="{{product.id}}">
+      <a class="fbt__image-link" href="##">
+        <img class="fbt__image lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage product.main_image 'gallery_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}">
+      </a>
+    </li>
+    {{#contains (pluck product.custom_fields 'name') 'fbt-product'}}
+      {{!-- do nothing, we will ajax each fbt-product custom field --}}
+    {{else}}
+      {{#contains (pluck product.custom_fields 'name') 'fbt'}}
+        {{#each (limit product.related_products 3)}}
+           {{> components/custom/freq-bought-together-image-item product=this}}
+        {{/each}}
+      {{/contains}}
+    {{/contains}}
+    <li class="fbt__image-item fbt__total">
+      <p class="fbt__total-txt">Total Price: <span class="fbt__total-price" id="fbt-totalPrice"></span></p>
+      <a class="button button--primary fbt__total-button" id="fbt-addAll" href="##">Add to Cart</a>
+    </li>
+  </ul>
+
+  <p class="fbt__helper-text">Please choose options for all selected products</p>
+
+  <ul class="fbt__detail-list">
+    <li class="fbt__detail-item isChecked {{#if product.options}}hasOptions hasOptions--loaded{{/if}}" data-product-id="{{product.id}}">
+      <form method="post" action="/cart.php" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="product_id" value="{{product.id}}"/>
+        <input type="hidden" name="qty[]" value="1"/>
+        <div class="fbt__detail-field">
+          <input class="fbt__detail-checkbox form-checkbox" type="checkbox" name="fbt__mainProduct" id="fbt__mainProduct" checked>
+          <label class="fbt__detail-label form-label" for="fbt__mainProduct">
+            <span class="fbt__detail-name"><strong>This Item:</strong> {{product.title}}</span>
+            {{> components/products/price price=product.price bdsp_search_items=product.category}}
+          </label>
+        </div>
+        {{#if product.options}}
+          <div class="fbt__toggle-options">Choose Options</div>
+          <div class="fbt__detail-options" data-freq-option-change>
+            <div class="fbt__detail-options-error"></div>
+            {{#each product.options}}
+              {{{dynamicComponent 'components/products/options'}}}
+            {{/each}}
+          </div>
+        {{/if}}
+      </form>
+    </li>
+    {{#contains (pluck product.custom_fields 'name') 'fbt-product'}}
+      {{!-- do nothing, we will ajax each fbt-product custom field --}}
+    {{else}}
+      {{#contains (pluck product.custom_fields 'name') 'fbt'}}
+        {{#each (limit product.related_products 3)}}
+           {{> components/custom/freq-bought-together-detail-item product=this}}
+        {{/each}}
+      {{/contains}}
+    {{/contains}}
+  </ul>
+
+  <div class="loadingOverlay"></div>
+</div>

@@ -1,0 +1,71 @@
+/* ==========================================================
+ * ## I don't think you need any of this but do need to style the search items.
+ * ========================================================== */
+
+// .slide-search.dropdown--quickSearch {
+//     height: 100vh;
+//     width: 0px;
+//     position: fixed;
+//     z-index: 75;
+//     background-color: $dropdown--quickSearch-backgroundColor;
+//     overflow-x: hidden;
+//     padding: 0;
+//     padding-top: 60px;
+//     display: block;
+//     top: 0;
+//     left: auto !important;
+//     right: 0 !important;
+//     transition: width 0.5s;
+// }
+
+// .slide-search.dropdown--quickSearch.is-open {
+//     width: 300px !important;
+//     left: auto !important;
+//     padding: 1rem;
+//     padding-top: 60px;
+// }
+
+// .slide-search__container {
+//     display: none;
+// }
+
+// .slide-search .container {
+//     padding: 0;
+// }
+
+// .slide-search .productGrid {
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// .slide-search .productGrid .product {
+//     width: 100%;
+//     padding: 0;
+// }
+
+// .slide-search .quickSearchResults .search-results-close {
+//     display: none;
+// }
+
+// .slide-search .search-results-close {
+//     position: absolute;
+//     left: -5px;
+//     top: 10px;
+//     font-size: 36px;
+//     margin-left: 10px;
+//     display: block;
+// }
+
+/* ==========================================================
+ * ## Needed
+ * ========================================================== */
+
+// Needed for initial page load
+.slide-search-container {
+    display: none;
+}
+
+// Needed for after the mmenu package moves the container
+.mm-ocd .slide-search-container {
+    display: block;
+}

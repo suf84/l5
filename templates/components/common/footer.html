@@ -1,0 +1,92 @@
+<footer class="footer footer-2 footer-2--default" role="contentinfo">
+    <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
+
+    {{> components/custom/contact-cta theme="footer" show_heading=false}}
+
+    <div class="container footer-2__payment">
+        {{> components/common/payment-icons}}
+    </div>
+
+    <section class="footer-2__links">
+        <div class="container">
+            <section class="footer-info">
+                {{#for 1 (lang 'custom.footer.number-of-columns')}}
+                    <article class="footer-info-col footer-info-col--small" data-section-type="footer-{{camelcase (lang (concat (concat 'custom.footer.column-'$index)'.title'))}}">
+                        <h3 class="footer-info-heading">{{lang (concat (concat 'custom.footer.column-'$index)'.title')}}</h3>
+                        {{#if (isString (lang (concat (concat 'custom.footer.column-'$index)'.text')))}}
+                            <p class="footer-info-text">
+                                {{lang (concat (concat 'custom.footer.column-'$index)'.text')}}
+                            </p>
+                        {{/if}}
+                        <ul class="footer-info-list">
+                            {{#for 1 (lang (concat (concat 'custom.footer.column-'$index)'.number-of-links'))}}
+                                <li class="footer-info-list__item">
+                                    <a class="footer-info-list__item-link" href="{{lang (concat (concat (concat (concat 'custom.footer.column-'../$index)'.link-')$index)'.link')}}">{{lang (concat (concat (concat (concat 'custom.footer.column-'../$index)'.link-')$index)'.text')}}</a>
+                                </li>
+                            {{/for}}
+                        </ul>
+                    </article>
+                {{/for}}
+                <article class="footer-info-col footer-info-col--social" data-section-type="footer-webPages">
+                    <div>
+                        <h3 class="footer-info-heading">{{lang 'social.connect'}}</h3>
+                        {{> components/common/social-links footer=true}}
+                    </div>
+                    <div>
+                        <h3 class="footer-info-heading">Also Available On</h3>
+                        <ul class="socialLinks socialLinks--alt">
+                            <li class="socialLinks-item">
+                                <a class="icon icon--amazon" href="https://www.amazon.com/level5" target="_blank" rel="noopener">
+                                    <svg><use xlink:href="#icon-amazon" /></svg>
+                                </a>
+                            </li>
+                            <li class="socialLinks-item">
+                                <a class="icon icon--ebay" href="https://www.ebay.com/str/level5tools" target="_blank" rel="noopener">
+                                    <svg><use xlink:href="#icon-ebay" /></svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="footer-info-col footer-info-col--newsletter" data-section-type="newsletterSubscription">
+                    {{#if settings.show_newsletter_box}}
+                        {{> components/common/subscription-form}}
+                    {{/if}}
+                </article>
+            </section>
+        </div>
+    </section>
+    <section class="bg-paint-splatter footer-2__bottom">
+        <div class="footer-2__bottom-container container">
+            <div class="footer-2__bottom-left">
+                <div class="footer-copyright footer-copyright--reserved">
+                    <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} All rights reserved.</p>
+                </div>
+                <div class="footer-copyright footer-copyright--address">
+                    <p class="powered-by">
+                        {{settings.address}}
+                    </p>
+                </div>
+                <div class="footer-copyright footer-copyright--trademarks">
+                    <p class="powered-by">
+                        {{lang 'custom.footer.bottom.trademarks'}}
+                    </p>
+                </div>
+            </div>
+            <div class="footer-2__bottom-right">
+                <ul class="footer-2__bottom-list">
+                    {{#for 1 (lang 'custom.footer.bottom.number-of-links')}}
+                        <li class="footer-2__bottom-list-item">
+                            <a href="{{lang (concat (concat 'custom.footer.bottom.link-' $index) '.url')}}">{{lang (concat (concat 'custom.footer.bottom.link-' $index) '.text')}}</a>
+                        </li>
+                    {{/for}}
+                    {{#if (lang 'custom.footer.bottom.show-sitemap') '===' 'true'}}
+                    <li class="footer-2__bottom-list-item">
+                        <a href="{{urls.sitemap}}" rel="nofollow">{{lang 'sitemap.page_title'}}</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </section>
+</footer>

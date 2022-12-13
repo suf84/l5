@@ -1,0 +1,23 @@
+<section class="container category-cta">
+    <h2 class="category-cta-heading h1">
+        {{lang 'custom.home.category-cta.heading'}}
+    </h2>
+    <div class="category-cta__container">
+        {{#for 1 (lang 'custom.home.category-cta.number-of-ctas')}}
+            <article class="category-card">
+                <figure class="category-card__figure">
+                    <img src="{{cdn (concat 'webdav:' (lang (concat (concat 'custom.home.category-cta.cta-'$index)'.image')))}}" alt="{{lang (concat (concat 'custom.home.category-cta.cta-'$index)'.image-alt')}}">
+                </figure>
+                <div class="category-card__content">
+                    <div class="category-card__content-container">
+                        <h1 class="category-card__heading h2">
+                            {{lang (concat (concat 'custom.home.category-cta.cta-'$index)'.title')}}
+                        </h1>
+                        <p class="category-card__text">{{lang (concat (concat 'custom.home.category-cta.cta-'$index)'.text')}}</p>
+                    </div>
+                    <a href="{{lang (concat (concat 'custom.home.category-cta.cta-'$index)'.button-link')}}" class="button button--primary category-card__button">{{lang (concat (concat 'custom.home.category-cta.cta-'$index)'.button-text')}}</a>
+                </div>
+            </article>
+        {{/for}}
+    </div>
+</section>

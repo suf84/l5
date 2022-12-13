@@ -1,0 +1,12 @@
+<article class="blog-side__container">
+    <h3 class="blog-sidebar__header h3">
+        {{lang 'custom.blog.sidebar.most-popular.heading'}}
+    </h3>
+    <ul class="blog-sidebar__list">
+        {{#for 1 (lang 'custom.blog.sidebar.most-popular.number-of-posts')}}
+        <li class="blog-sidebar__list-item">
+            <a href="{{lang (concat (concat 'custom.blog.sidebar.most-popular.post-'$index)'.link')}}">{{lang (concat (concat 'custom.blog.sidebar.most-popular.post-'$index)'.title')}}</a>
+        </li>
+        {{/for}}
+    </ul>
+</article>

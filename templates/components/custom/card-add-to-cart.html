@@ -1,0 +1,96 @@
+{{#and
+    (if theme_settings.its.card_atc_button)
+    (if theme_settings.its.card_atc_button_pos '===' 'bottom')
+}}
+
+{{!-- Generates a unique ID for the element so we don't have duplicate IDs on the page --}}
+
+{{#if (getVar 'UUIDcounter')}}
+    {{assignVar 'UUIDcounter' (add (getVar 'UUIDcounter') 1)}}
+    {{assignVar 'UUIDcatc' (add (toInt (moment unixtimestamp format="x")) (getVar 'UUIDcounter'))}}
+{{else}}
+    {{assignVar 'UUIDcounter' 1}}
+    {{assignVar 'UUIDcatc' (toInt (moment unixtimestamp format="x"))}}
+{{/if}}
+
+{{assignVar 'catcAddID' (get 'string' (concat (concat (concat 'card-atc__add-' id) '-') (getVar 'UUIDcatc')))}}
+{{assignVar 'catcQtyID' (get 'string' (concat (concat (concat 'card-atc__qty-' id) '-') (getVar 'UUIDcatc')))}}
+
+<div class="card-atc js-card-atc">
+    {{#if has_options}}
+        <div class="card-atc__section card-atc__section--action">
+            <button
+                type="button"
+                class="card-atc__button button button--primary quickview card-atc__button--choose-options"
+                id="{{getVar 'catcAddID'}}"
+                data-product-id="{{id}}"
+                value="{{lang 'products.choose_options'}}"
+                data-event-type="product-click"
+            >{{lang 'products.choose_options'}}</button>
+            <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
+        </div>
+    {{/if}}
+    {{#or
+        (if add_to_cart_url)
+        (if pre_order)
+    }}
+        {{#if theme_settings.its.card_atc_input}}
+        <div class="card-atc__section card-atc__section--qty">
+            <label for="{{getVar 'catcQtyID'}}" class="card-atc__label is-srOnly">{{lang 'products.quantity'}}</label>
+            <div class="card-atc-increment {{#if theme_settings.its.card_atc_input_buttons}}card-atc-increment--has-buttons{{/if}} js-card-atc-increment">
+
+                <input
+                    type="tel"
+                    class="form-input card-atc__input card-atc__input--total js-card-atc__input--total"
+                    name="{{getVar 'catcQtyID'}}"
+                    id="{{getVar 'catcQtyID'}}"
+                    value="{{#if (isString theme_settings.its.card_atc_input_default)}}0{{else}}{{theme_settings.its.card_atc_input_default}}{{/if}}"
+                    min="1"
+                    pattern="[0-9]*"
+                    aria-live="polite"
+                >
+                <div class="card-atc-button-wrapper">
+                    {{#if theme_settings.its.card_atc_input_buttons}}
+                    <button class="button button--icon" data-action="inc" type="button">
+                        <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+                        <span class="icon-wrapper" aria-hidden="true">
+                            <svg class="icon">
+                                <use xlink:href="#icon-add"/>
+                            </svg>
+                        </span>
+                    </button>
+                    {{/if}}
+                    {{#if theme_settings.its.card_atc_input_buttons}}
+                    <button class="button button--icon" data-action="dec" type="button">
+                        <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+                        <span class="icon-wrapper" aria-hidden="true">
+                            <svg class="icon">
+                                <use xlink:href="#icon-minus"/>
+                            </svg>
+                        </span>
+                    </button>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        <div class="card-atc__section card-atc__section--action">
+            <button
+                type="button"
+                class="card-atc__button button button--primary js-card-atc__button"
+                id="{{getVar 'catcAddID'}}"
+                data-default-message="{{#if pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
+                data-wait-message="{{lang 'products.adding_to_cart'}}"
+                data-added-message="Add to Cart"
+                value="{{#if pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
+                data-card-add-to-cart="{{#if pre_order}}{{pre_order_add_to_cart_url}}{{else}}{{add_to_cart_url}}{{/if}}"
+                data-event-type="product-click"
+            >{{#if pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}</button>
+            <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
+        </div>
+    {{/or}}
+    {{#if out_of_stock_message }}
+        <a href="{{url}}"  class="button button--small" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+    {{/if}}
+</div>
+{{/and}}

@@ -1,0 +1,120 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{inject "categoryId" category.id}}
+
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<div class="page">
+    <div class="container category-heading__container">
+        {{#unless theme_settings.hide_category_page_heading }}
+            <h1 class="page-heading">{{category.name}}</h1>
+            <!--{{{region name="category_below_header"}}}-->
+        {{/unless}}
+    </div>
+
+    {{#if category.subcategories}}
+    <section class="categoryGrid container">
+        <ul class="categoryGrid_list">
+            {{#each category.subcategories}}
+            <li class="categoryGrid_list-items">
+                <div class="card-wrapper">
+                    <article class="card">
+                        <figure class="card-figure">
+                            <a href="{{url}}" class="card-figure__link">
+                                <div class="card-img-container" {{#if theme_settings.its.image_swap_on_hover}} data-image-swap-src="{{#each images}}{{#if @index '===' 1}}{{getImage data 'productgallery_size'}}{{/if}}{{/each}}"{{/if}}>
+                                    {{> components/common/responsive-img
+                                        image=image
+                                        class="card-image"
+                                        fallback_size=theme_settings.productgallery_size
+                                        lazyload=theme_settings.lazyload_mode
+                                        default_image=theme_settings.default_image_product
+                                    }}
+                                </div>
+                            </a>
+                        </figure>
+                        <div class="card-body"> 
+                            <h3 class="card-title">
+                                <a href="{{url}}">
+                                    {{name}}
+                                </a>
+                            </h3>                    
+                        </div>
+                    </article>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+    {{/if}}
+
+
+    {{#if theme_settings.its.category_subcat_cards}}
+        {{> components/custom/subcat-grid}}
+    {{/if}}
+
+    <section class="container" id="product-listing-container">
+        {{> components/category/product-listing}}
+    </section>
+
+    {{#if banners.bottom}}
+        {{#if settings.data_tag_enabled}}
+            <div class="banners" data-banner-location="bottom">
+                {{#each (limit banners.bottom_metadata 1)}}
+                    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                        <div data-event-type="promotion-click">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="banners bg-paint-splatter" data-banner-location="bottom">
+                <div class="banner">
+                    {{{limit banners.bottom 1}}}
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+
+    {{#if category.description}}
+    <div class="template-background">
+        <div class="container">
+            {{{category.description}}}
+        </div>
+    </div>
+    {{/if}}
+
+    {{!-- {{#if category.products}}
+        <div class="container product-carousel__container">
+            <div class="product-carousel__header">
+                <h2 class="page-heading h1">{{lang 'products.featured' }}</h2>
+                {{#unless page_type '===' 'category'}} <a href="{{lang 'products.featured_sublink_url' }}"
+                    class="product-carousel__sublink">{{{lang 'products.featured_sublink' }}}</a>{{/unless}}
+            </div>
+        {{{region name="category_below_description"}}}
+        </div>
+    {{/if}} --}}
+    {{{region name="category_below_content"}}}
+
+    <!-- ITS LOADING OVERLAY -->
+    <div class="loadingOverlay loadingOverlay--product-listing"></div>
+</div>
+
+{{/partial}}
+{{> layout/base container_active=false}}

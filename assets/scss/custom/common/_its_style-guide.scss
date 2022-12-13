@@ -1,0 +1,664 @@
+// /* ==========================================================
+// ## These match up directly with the ITS Styleguide
+// ## Colors shouldn't need to be changed but the option
+// ## is available to you.
+// ========================================================== */
+
+/* ==========================================================
+ * ## Containers
+ * ========================================================== */
+
+.container {
+    @include container;
+}
+
+.page,
+.main {
+    margin: 0;
+}
+
+.page-sidebar,
+.page-content {
+    padding: 0;
+    float: none;
+
+}
+
+.page-sidebar + .page-content {
+    padding: 0;
+    @include breakpoint('medium') {
+        width: 100%;
+    }
+}
+
+/* ==========================================================
+ * ## HTML Elements
+ * ========================================================== */
+
+/* ==========================================================
+ * ## Fluid Typography
+    - https://css-tricks.com/snippets/css/fluid-typography/
+    - calculation:   font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+ * ========================================================== */
+
+.h1,
+h1 {
+    color: $h1-color;
+    font-size: $fontSize-largest--mobile;
+    font-family: $font-family--heading;
+    font-weight: $h1-font-weight;
+    text-transform: uppercase;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-largest;
+        font-size: calc(28px + (60 - 28) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $fontSize-largest;
+    }
+}
+
+.h2,
+h2 {
+    color: $h2-color;
+    font-size: $fontSize-larger--mobile;
+    font-family: $font-family--heading;
+    font-weight: $h2-font-weight;
+    text-transform: uppercase;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-larger;
+        font-size: calc(23px + (38 - 23) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $fontSize-larger;
+    }
+}
+
+.h3,
+h3 {
+    color: $h3-color;
+    font-size: $fontSize-large--mobile;
+    font-family: $font-family--heading;
+    font-weight: $h3-font-weight;
+    text-transform: uppercase;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-large;
+        font-size: calc(18px + (26 - 18) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $fontSize-large;
+    }
+}
+
+.h4,
+h4 {
+    color: $h4-color;
+    font-size: $fontSize-small--mobile;
+    font-family: $font-family--heading;
+    font-weight: $h4-font-weight;
+    text-transform: uppercase;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-small;
+        font-size: calc(18px + (23 - 18) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $fontSize-small;
+    }
+}
+
+.h5,
+h5 {
+    color: $h5-color;
+    font-size: $fontSize-smaller;
+    font-family: $font-family--heading;
+    font-weight: $h5-font-weight;
+    text-transform: uppercase;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-small;
+        font-size: calc(12px + (16 - 12) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $fontSize-smaller;
+    }
+}
+
+.h6,
+h6 {
+    color: $h6-color;
+    font-size: $fontSize-smallest;
+    font-family: $font-family--heading;
+    font-weight: $h6-font-weight;
+    text-transform: uppercase;
+}
+
+p,
+div {
+    color: $p-color;
+    font-size: $p-font-size;
+    font-family: $p-font-family;
+    font-weight: $p-font-weight;
+
+    @include breakpoint('small') {
+        font-size: $p-font-size;
+        font-size: calc(12px + (16 - 12) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $p-font-size;
+    }
+}
+
+a {
+    color: $a-color;
+    font-size: $a-font-size;
+    font-family: $a-font-family;
+    font-weight: $a-font-weight;
+    text-decoration: $a-text-decoration;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: $a-color--hover;
+        text-decoration: $a-text-decoration--alt;
+    }
+}
+
+
+p,
+cite,
+li,
+li a,
+ol a,
+label,
+div,
+.footer-info-heading,
+.navList-action,
+.navPages-action,
+input.button,
+a.button,
+button.button,
+.dropdown-menu,
+.font-scale {
+    font-size: $fontSize-base; // 16px
+
+    @include breakpoint('small') {
+        font-size: $fontSize-base;
+        font-size: calc(12px + (16 - 12) * ((100vw - 769px) / (1441 - 769)));
+    }
+
+    @include breakpoint('xlarge') {
+        font-size: $fontSize-base;
+    }
+}
+
+
+/* ==========================================================
+ * ## Buttons
+ * ========================================================== */
+
+.button {
+    text-transform: uppercase;
+    font-family: $font-family--body;
+    border-radius: $button-border-radius-primary;
+    border-width: $button-border-width-primary;
+    border-style: $button-border-style-primary;
+
+    &.button--primary {
+        font-weight: $button-font-weight-primary;
+        color: $button-text-color-primary;
+        background-color: $button-bg-color-primary;
+        border-color: $button-border-color-primary;
+        border-radius: $button-border-radius-primary;
+        border-width: $button-border-width-primary;
+        border-style: $button-border-style-primary;
+
+        &:hover,
+        &:focus {
+            background-color: $button-bg-color-primary--hover;
+            color: $button-text-color-primary--hover;
+            border-color: $button-border-color-primary--hover;
+            text-decoration: $button-text-decoration-primary--hover;
+        }
+
+        &:active {
+            background-color: $button-bg-color-primary--active;
+            color: $button-text-color-primary--active;
+            border-color: $button-border-color-primary--active;
+            text-decoration: $button-text-decoration-primary--active;
+        }
+    }
+
+    &.button--secondary {
+        font-weight: $button-font-weight-secondary;
+        color: $button-text-color-secondary;
+        background-color: $button-bg-color-secondary;
+        border-color: $button-border-color-secondary;
+        border-radius: $button-border-radius-secondary;
+        border-width: $button-border-width-secondary;
+        border-style: $button-border-style-secondary;
+
+        &:hover,
+        &:focus {
+            background-color: $button-bg-color-secondary--hover;
+            color: $button-text-color-secondary--hover;
+            border-color: $button-border-color-secondary--hover;
+            text-decoration: $button-text-decoration-secondary--hover;
+        }
+
+        &:active {
+            background-color: $button-bg-color-secondary--active;
+            color: $button-text-color-secondary--active;
+            border-color: $button-border-color-secondary--active;
+            text-decoration: $button-text-decoration-secondary--active;
+        }
+    }
+
+    &.button--small {
+        font-weight: $button-font-weight-small;
+        border-radius: $button-border-radius-small;
+        border-width: $button-border-width-small;
+        border-style: $button-border-style-small;
+
+        &:hover,
+        &:focus {
+            text-decoration: $button-text-decoration-small--hover;
+        }
+
+        &:active {
+            text-decoration: $button-text-decoration-small--active;
+        }
+    }
+
+    &.card-figcaption-button {
+        width: $button-fig-caption-width;
+    }
+}
+
+
+/* ==========================================================
+ * ## Form Elements
+ * ========================================================== */
+
+.form-input {
+    color: $input-text-color;
+    background: $input-bg-color;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    height: remCalc(44px);
+
+    &:focus {
+        background: $input-bg-color--focus;
+        border: $input-border--focus;
+        border-radius: $input-border-radius;
+    }
+}
+
+.form-select {
+    height: remCalc(44px);
+    background-position: right 0.5625rem top remCalc(10px);
+}
+
+.form-select--small,
+.form-select--date {
+    font-size: $fontSize-base;
+    height: remCalc(36px);
+    background-position: right 0.5625rem top remCalc(8px);
+}
+
+.form-prefixPostfix .button {
+    height: remCalc(44px);
+    line-height: 0;
+}
+
+// Category page sort by dropdown
+.actionBar-section .form-label {
+    font-size: $fontSize-base;
+}
+
+/* ==========================================================
+ * ## Misc
+ * ========================================================== */
+
+.icon {
+    height: $icon-height;
+    width: $icon-width;
+}
+
+.icon svg {
+    fill: $icon-svg-color;
+    height: $icon-svg-height;
+    width: $icon-svg-width;
+}
+
+ol.breadcrumbs {
+    font-size: $fontSize-base;
+}
+
+.breadcrumb {
+    color: $font-color-primary;
+    font-size: inherit;
+
+    a {
+        color: $font-color-primary;
+        text-transform: uppercase;
+    }
+}
+
+.breadcrumb.is-active > .breadcrumb-label {
+    color: $font-color-primary;
+    font-weight: $fontWeight-normal;
+}
+
+.breadcrumb:not(:first-child):before {
+    content: '\00BB';
+    transform: none;
+    border: none;
+    height: 0;
+    top: -1px;
+    color: $font-color-primary;
+}
+
+.productView-brand {
+    font-size: $fontSize-larger--mobile;
+
+    @include breakpoint('medium') {
+        font-size: $fontSize-larger;
+    }
+}
+
+.productView-info-name {
+    font-size: $fontSize-base;
+}
+
+.price--withoutTax {
+    color: $color-primary--hover;
+    font-weight:300;
+}
+
+.rrp-price--withoutTax .price,
+.non-sale-price--withoutTax .price {
+    color: $font-color-primary;
+}
+
+.slick-track {
+    display: flex;
+}
+
+.slick-slide {
+    height: auto;
+}
+
+.slick-next,
+.slick-prev {
+    display: flex;
+    padding: 1rem;
+    width: auto;
+    height: auto;
+    border-color: rgba(241, 241, 241, .6);
+
+    &:hover,
+    &:focus {
+        background-color: rgba(241, 241, 241, .6);
+    }
+}
+
+.productCarousel-slide {
+    padding: 0;
+}
+
+.banners {
+    padding: 0;
+    background-color: $color-white;
+
+    .banner {
+        @include container;
+    }
+}
+
+/* ==========================================================
+ * ## Product Cards
+ * ========================================================== */
+
+.productGrid .product {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.page .page-content .productGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include breakpoint('xsmall') {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint('small') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint('medium') {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product {
+        width: 100%;
+    }
+
+    &::before,
+    &::after {
+        content: none;
+    }
+}
+
+.card-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background: $color-white;
+    border: 1px solid #ebebeb;
+    border-radius: $radius-heavy;
+    margin: 0.75rem;
+    padding: 0.75rem;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all linear 0.15s;
+
+    @include breakpoint('medium') {
+
+        &:hover,
+        &:focus-within {
+            .card-action-wrapper {
+                opacity: 1;
+            }
+        }
+    }
+
+
+    &:hover {
+        // @include breakpoint('medium'){
+            position: relative;
+            transform: translateY(-0.35rem);
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,.2)
+        // }
+    }
+}
+
+.card-figure {
+    height: 100%;
+    margin: -0.75rem;
+}
+
+.card-figure__link {
+    padding: 0.75rem;
+}
+
+.card-img-container {
+    position: relative;
+}
+
+.card-body {
+    padding: .75rem 0;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .card-text--brand {
+        color: $font-color-primary;
+        font-size: 1rem;
+        font-family: $font-family--heading;
+        font-weight: $fontWeight-normal;
+        text-transform: uppercase;
+    }
+
+    .card-title {
+        color: $font-color-primary;
+        font-size: remCalc(12px);
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .card-text--sku {
+        color: $font-color-primary;
+        font-size: remCalc(12px);
+    }
+
+    .price-section {
+        display: inline;
+
+        &.non-sale-price--withoutTax,
+        &.rrp-price--withoutTax {
+            color: #666;
+            font-weight:300;
+        }
+    }
+
+    // .price--withoutTax {
+    //     color: $color-primary--hover;
+    //     font-size: $fontSize-small;
+    //     font-family: $font-family--heading;
+    //     font-weight: $h4-font-weight;
+    // }
+
+    .card-text--extra {
+        color: $color-primary--hover;
+        margin-bottom: 1rem;
+    }
+
+    .card-atc__section--qty {
+        display: none;
+    }
+
+    .button--quickview {
+        width: 100%;
+        margin: 0;
+    }
+
+    .card-action-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    @include breakpoint('xsmall') {
+        .card-action-wrapper {
+            flex-direction: row;
+        }
+
+        .card-atc,
+        .button--quickview {
+            width: 50%;
+            margin-top: 0;
+            padding-left: 0;
+            padding-right: 0;
+            .button {
+                padding-left: 0;
+                padding-right: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    @include breakpoint('medium') {
+        .card-action-wrapper {
+            padding: 0.75rem 0;
+            opacity: 0;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            background-color: $color-white;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: all linear 0.15s;
+        }
+
+        .card-atc {
+            display: flex;
+        }
+
+        .card-atc,
+        .button--quickview {
+            width: 100%;
+            margin-top: 0;
+            .button {
+                width: 100%;
+            }
+        }
+
+        .card-atc__section--qty {
+            display: block;
+        }
+
+        .card-atc-increment {
+            margin-bottom: 0;
+            margin-right: 0.5rem;
+        }
+
+        .card-atc-increment .card-atc__input--total {
+            margin: 0;
+            border-right: none;
+            width: remCalc(44px);
+            border-radius: 0;
+        }
+
+        .card-atc-button-wrapper {
+            display: flex;
+            flex-direction: column;
+            font-size: 0;
+
+            .button {
+                padding: 2.5px 6px;
+            }
+        }
+
+        .card-atc__section--action {
+            flex: 1;
+        }
+
+        .button--icon .icon-wrapper {
+            svg {
+                height: 0.5rem;
+                width: 0.5rem;
+                fill: $color-black;
+            }
+        }
+    }
+}

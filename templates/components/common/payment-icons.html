@@ -1,0 +1,47 @@
+{{#with theme_settings}}
+    {{#or show_accept_amex show_accept_discover show_accept_mastercard show_accept_paypal show_accept_visa show_accept_amazonpay show_accept_googlepay show_accept_klarna show_accept_applepay}}
+    <div class="footer-payment-icons">
+        {{#if show_accept_mastercard}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/master-card.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_visa}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/visa.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_amex}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/amex.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_discover}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/discover.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_paypal}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/paypal.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_applepay}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/apple-pay.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_googlepay}}
+        <span>
+            <img class="lazyload" data-src="{{cdn '/img/custom-payment-icons/google-wallet.png'}}" src="{{cdn 'img/loading.svg'}}">
+        </span>
+        {{/if}}
+        {{#if show_accept_amazonpay}}
+        <svg class="footer-payment-icon"><use xlink:href="#icon-logo-amazonpay"></use></svg>
+        {{/if}}
+        {{#if show_accept_klarna}}
+        <svg class="footer-payment-icon"><use xlink:href="#icon-logo-klarna"></use></svg>
+        {{/if}}
+    </div>
+    {{/or}}
+{{/with}}

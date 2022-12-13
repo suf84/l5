@@ -1,0 +1,15 @@
+<div class="container product-carousel__container">
+    <div class="product-carousel__header">
+        <h2 class="page-heading h1">{{lang 'products.new' }}</h2>
+        <a href="{{lang 'products.new_sublink_url'}}" class="product-carousel__sublink">{{{lang 'products.new_sublink' }}}</a>
+    </div>
+    {{#if settings.data_tag_enabled}}
+        {{> components/products/carousel products=products list="New Products"}}
+    {{else}}
+        {{#if settings.data_tag_enabled}}
+            {{> components/products/carousel products=products list="New Products" }}
+        {{else}}
+            {{> components/products/carousel products=products list="New Products" }}
+        {{/if}}
+    {{/if}}
+</div>

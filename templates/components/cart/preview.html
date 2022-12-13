@@ -1,0 +1,37 @@
+<div class="modal-body modal-body--wf">
+	<h2 class="modal-header-title">
+		{{lang 'cart.added_to_cart.what_next' num_products=cart.added_item.quantity}}
+	</h2>
+	<div class="modal-header-actions">
+		<a class="button button--alt" href="{{urls.cart}}">
+			View Cart
+		</a>
+
+		<a href="#" class="button button--alt" role="button" data-reveal-close>
+			{{lang 'cart.added_to_cart.continue_shopping'}}
+		</a>
+
+		{{#if cart.show_primary_checkout_button}}
+		<a class="button button--primary" href="{{urls.checkout.single_address}}">
+			{{lang 'cart.added_to_cart.proceed_to_checkout'}}
+		</a>
+		{{/if}}
+	</div>
+
+    {{#if cart.suggested_products}}
+	    <h2 class="heading"><span>You May Also Like...</span></h2>
+        <section class="suggestiveCart">
+            <h2>
+                {{lang 'cart.added_to_cart.you_might_also_like'}}&hellip;
+            </h2>
+
+            <ul class="productGrid">
+                {{#each cart.suggested_products}}
+                    <li class="product">
+                        {{> components/products/card settings=../settings hide_product_quick_view=true theme_settings=../theme_settings}}
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+</div>

@@ -1,0 +1,1 @@
+{"components/custom/cart-page-upsell-targets--similar":"[\n    {{#each product.similar_by_views}}\n        {{#unless out_of_stock_message}}\n            \"{{id}}\"\n            {{#unless @last}},{{/unless}}\n        {{/unless}}\n    {{/each}}\n]\n"}

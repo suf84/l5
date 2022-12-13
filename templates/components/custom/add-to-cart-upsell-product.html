@@ -1,0 +1,39 @@
+<li class="product wf__product {{#if product.options}}hasOptions{{/if}}">
+	<form class="card form" method="post" action="/cart.php" enctype="multipart/form-data" data-upsell-cart-item-add>
+		<input type="hidden" name="action" value="add">
+		<input type="hidden" name="product_id" value="{{product.id}}"/>
+		<figure class="card-figure">
+			<a href="{{product.url}}">
+				<div class="card-img-container">
+					<img class="card-image lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage product.main_image 'gallery_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}">
+				</div>
+			</a>
+		</figure>
+		<div class="card-body">
+			<h4 class="card-title">
+				<a href="{{product.url}}">{{product.title}}</a>
+			</h4>
+			{{#if product.options}}
+				<div class="card-options" data-upsell-option-change>
+					{{#each product.options}}
+						{{{dynamicComponent 'components/products/options'}}}
+					{{/each}}
+				</div>
+			{{/if}}
+			<div class="card-price">
+				{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+					{{> components/products/price price=product.price bdsp_search_items=product.category}}
+				{{else}}
+					{{> components/common/login-for-pricing}}
+				{{/or}}
+			</div>
+		</div>
+		<div class="card-actions">
+			{{#if product.options}}
+				<input type="submit" class="button button--primary button--disabled" value="Choose an Option">
+			{{else}}
+				<input type="submit" class="button button--primary" value="Add to Cart">
+			{{/if}}
+		</div>
+	<form>
+</li>

@@ -1,0 +1,263 @@
+$home-bottom-border-radius: $radius-normal;
+$home-bottom-min-card-height: 380px; // blog card img gets set with this too
+
+.home-bottom-callout__container {
+    display: grid;
+    gap: 1.5rem;
+
+    @include breakpoint('small') {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint('medium') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.home-bottom-card {
+    overflow: hidden;
+    text-align: center;
+    border-radius: $home-bottom-border-radius;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: $home-bottom-min-card-height;
+}
+
+.home-bottom-card__heading {
+    margin: 0 0 1rem;
+}
+
+.home-bottom-card__list {
+    text-align: left;
+}
+
+/* ==========================================================
+ * ## GiveAway
+ * ========================================================== */
+.home-bottom-card.home-bottom-card--giveaway {
+    background-color: $color-alt--hover;
+
+    .home-bottom-card__text-month {
+        text-transform: uppercase;
+    }
+
+    .home-bottom-card__item-content {
+        display: flex;
+        flex-flow: row wrap;
+        background-color: #f2f2f2;
+        padding: 1rem 0.5rem 0.5rem;
+        border-radius: $home-bottom-border-radius;
+    }
+
+    .home-bottom-card__item-heading {
+        width: 100%;
+        margin: 0;
+    }
+
+    .home-bottom-card__item-wrapper {
+        display: flex;
+        flex: 1;
+    }
+
+    .home-bottom-card__item-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        p {
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+
+            span {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .home-bottom-card__link {
+        display: inline-block;
+        margin-top: 1rem;
+    }
+}
+
+
+/* ==========================================================
+ * ## VIP Club
+ * ========================================================== */
+.home-bottom-card.home-bottom-card--vip {
+    color: $color-white;
+
+    .home-bottom-card__heading {
+        color: $color-white;
+    }
+
+    .home-bottom-card__list {
+        margin: 0 auto;
+        max-width: 450px;
+        padding: 0 2rem;
+        list-style-image: url('../img/white-check.png');
+        color: $color-white;
+
+        @include breakpoint('large') {
+            padding: 0 20%;
+        }
+
+        li {
+            color: $color-white;
+        }
+    }
+
+    .home-bottom-card__newsletter {
+
+        .footer-info-heading,
+        .footer-info-text {
+            display: none;
+        }
+
+        .form-field {
+            margin: 0;
+        }
+
+        .form-prefixPostfix {
+            flex-wrap: nowrap;
+        }
+
+        .form-prefixPostfix .form-input {
+            flex: auto;
+        }
+
+        .form-prefixPostfix .button {
+            @include breakpoint('xsmall') {
+                flex: 1;
+            }
+        }
+
+        .button.button--primary {
+            background-color: $color-black;
+            border-color: $color-black;
+            border-width: 2px;
+            margin: 0;
+            font-family: $font-family--body;
+
+            &:hover,
+            &:focus {
+                background-color: $color-primary;
+            }
+        }
+    }
+
+    .home-bottom-card__link {
+        color: $color-white;
+        text-transform: uppercase;
+    }
+}
+
+/* ==========================================================
+ * ## blog
+ * ========================================================== */
+
+.home-bottom-card.home-bottom-card--blog {
+    padding: 0;
+    position: relative;
+
+    @include breakpoint('small') {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    @include breakpoint('medium') {
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    &:hover {
+        .home-bottom-card__image {
+            transform: scale(1.05);
+        }
+    }
+
+    .home-bottom-card__heading {
+        position: absolute;
+        width: 100%;
+        color: white;
+        margin-top: 1rem;
+        z-index: 1;
+    }
+
+    .home-bottom-card__image {
+        width: 100%;
+        object-fit: cover;
+        border-radius: $home-bottom-border-radius;
+        height: $home-bottom-min-card-height;
+        transition: all linear 0.15s;
+
+        @include breakpoint('medium') {
+            height: 100%;
+            max-height: none;
+        }
+    }
+
+    .home-bottom-card__icon-wrapper {
+        padding: 0.5rem 1rem;
+        text-align: right;
+    }
+
+    .home-bottom-card__content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        .icon--youtube {
+            position: relative;
+            height: 3.25rem;
+            width: 3.25rem;
+
+            svg {
+                fill: $color-primary;
+            }
+
+            // White fill play icon hack
+            &::after {
+                content: '';
+                position: absolute;
+                top: 48%;
+                left: 53%;
+                transform: translate(-51%, -50%);
+                border-color: transparent transparent transparent #ffffff;
+                border-style: solid;
+                border-width: 9px 0 9px 15px;
+            }
+        }
+    }
+
+    .home-bottom-card__text {
+        padding: 1rem;
+        width: 100%;
+        background-color: #222222;
+        border-bottom-right-radius: $home-bottom-border-radius + 2;
+        border-bottom-left-radius: $home-bottom-border-radius + 2;
+
+        h2,
+        p,
+        a {
+            color: $color-white;
+        }
+
+        .home-bottom-card__text-heading {
+            margin: 0;
+        }
+
+        .home-bottom-card__text-desc {
+            font-weight: $fontWeight-thin;
+        }
+
+        .home-bottom-card__text-link {
+            text-transform: uppercase;
+        }
+    }
+
+ }

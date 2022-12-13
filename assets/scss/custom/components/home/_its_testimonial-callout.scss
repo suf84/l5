@@ -1,0 +1,71 @@
+
+.testimonialCarousel {
+    margin: 3rem 0 0;
+
+    .slick-slide {
+        padding-top: 1rem;
+    }
+
+    .icon--qoute {
+        position: relative;
+        flex-shrink: 0;
+        height: 2.25rem;
+        width: 2.25rem;
+        fill: #d3d3d3;
+        margin-right: 0.5rem;
+        
+        @media (max-width: 768px) {
+            height:1.2rem;
+            width:1.2rem;
+        }
+
+        svg {
+            position: absolute;
+            left: 0;
+            top: -15px;
+            
+        }
+    }
+
+    [data-testimonial-slide] blockqoute {
+        position: relative;
+        display: block;
+        max-width: 850px;
+        margin: 0 auto;
+        @include breakpoint('small') {
+            padding: 1rem;
+        }
+
+        
+    }
+    [data-testimonial-slide] blockqoute p {
+        position: relative;
+        font-family: $font-family--body;
+        font-style: italic;
+        font-weight: $fontWeight-thin;
+        text-transform: none;
+        margin: 0;
+        
+        @media (max-width: 768px) {
+            font-size:1.2rem;
+            line-height:1.3;
+        }
+    }
+
+    [data-testimonial-slide] blockqoute cite {
+        color: #222222;
+        display: block;
+        margin-top: 5px;
+        text-align: right;
+        font-style: normal;
+        font-weight: $fontWeight-normal;
+
+        a {
+            color: $color-primary;
+        }
+    }
+
+    [data-testimonial-slide] blockqoute cite:before {
+        content: "\2014 \2009";
+    }
+}

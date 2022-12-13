@@ -1,0 +1,25 @@
+{{#if footer}}
+    {{#if social_media}}
+        <ul class="socialLinks socialLinks--alt">
+            {{#each social_media}}
+                <li class="socialLinks-item">
+                    <a class="img--{{display_name}}" href="{{url}}" target="_blank" rel="noopener">
+                        <img class="lazyload" data-src="{{cdn (concat (concat '/img/' display_name) '-footer.png')}}" src="{{cdn 'img/loading.svg'}}">
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+{{else}}
+    {{#if social_media}}
+        <ul class="socialLinks socialLinks--alt">
+            {{#each social_media}}
+                <li class="socialLinks-item">
+                    <a class="icon icon--{{display_name}}" href="{{url}}" target="_blank" rel="noopener">
+                        <svg><use xlink:href="#icon-{{display_name}}" /></svg>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+{{/if}}

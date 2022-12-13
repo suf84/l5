@@ -1,0 +1,71 @@
+<nav class="navUser">
+    <ul class="navUser-section navUser-section--alt">
+        <li class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>
+            {{> components/common/quick-search}}
+        </li>
+        <li class="navUser-item navUser-item--search">
+            <button class="navUser-action navUser-item-cartLabel navUser-action--quickSearch" type="button"
+                id="quick-search-expand" data-search="quickSearch" aria-controls="quickSearch"
+                aria-label="{{lang 'common.search'}}">
+                {{lang 'common.search'}}
+            </button>
+        </li>
+        <li class="navUser-item navUser-item--account">
+            {{#if customer}}
+            <a class="navUser-action" href="{{urls.account.wishlists.all}}" aria-label="{{lang 'common.login'}}">
+                <span>Wishlist</span>
+            </a>
+            {{else}}
+            {{#if theme_settings.its_popup_login}}
+            <a class="navUser-action" href="##" aria-label="{{lang 'common.login'}}" data-reveal-id="popupLoginWindow">
+                <span>Wishlist</span>
+            </a>
+            {{else}}
+            <a class="navUser-action" href="{{urls.auth.login}}" aria-label="{{lang 'common.login'}}">
+                <span>Wishlist</span>
+            </a>
+            {{/if}}
+            {{/if}}
+        </li>
+        <li class="navUser-item navUser-item--cart">
+            {{> components/custom/slide-cart}}
+        </li>
+    </ul>
+
+</nav>
+
+
+{{!-- Leftover elements
+{{> components/common/currency-selector}}
+
+{{#if customer.store_credit.value '>' 0}}
+<li class="navUser-item">
+    <a class="navUser-action navUser-action--storeCredit" data-dropdown="storeCredit-dropdown"
+        data-options="align:bottom" href="{{urls.cart}}"
+        aria-label="{{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}">
+        <span class="navUser-action-divider">
+            {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
+        </span>
+    </a>
+    <div class="dropdown-menu" id="storeCredit-dropdown" data-dropdown-content aria-hidden="true">
+        {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
+    </div>
+</li>
+{{/if}}
+
+{{#if theme_settings.social_icon_placement_top}}
+<li class="navUser-item navUser-item--social">
+    {{> components/common/social-links}}
+</li>
+<li class="navUser-item navUser-item--divider">|</li>
+{{/if}}
+
+{{#if settings.gift_certificates_enabled}}
+<li class="navUser-item">
+    <a class="navUser-action" href="{{urls.gift_certificate.purchase}}" aria-label="{{lang 'common.gift_cert'}}">
+        {{lang 'common.gift_cert'}}
+    </a>
+</li>
+{{/if}}
+
+--}}

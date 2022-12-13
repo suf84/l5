@@ -1,0 +1,125 @@
+.category__description-container {
+    @include breakpoint('small'){
+        display: flex;
+        max-width: 70em;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    };
+}
+
+.page--category .productGrid {
+    display:  grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin: 0;
+
+    @include breakpoint('xsmall'){   
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint('small'){
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint('medium'){
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &::before, &::after{
+        display: none;
+    }
+}
+
+.banner {
+    max-width: none;
+}
+
+.banners{
+    display: none;
+    @include breakpoint('small'){
+        display: block;
+        padding: 0;
+    }
+}
+
+// sort by dropdown filter
+.actionBar-section {
+        float: right;
+
+    .form-field {
+        border: none;
+    }
+}
+
+.page-sidebar {
+    @include breakpoint('medium'){
+        width: 100%;
+
+        ul {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+
+            a{
+                padding-top: remCalc(9px);
+                padding-bottom: remCalc(6px);
+                line-height: 1.2rem;
+            }
+        }
+    }
+}
+.custom-fs__list {
+    display: block;
+    justify-content: center;
+    list-style-type: none;
+    margin: auto;
+    width: fit-content;
+    @include breakpoint('xsmall'){
+        columns: 2;
+    }
+    @include breakpoint('small'){
+        columns: auto;
+    }
+    @include breakpoint('medium'){
+        columns: auto;
+    }
+    @include breakpoint('large'){
+        columns: auto;
+    }
+
+    .custom-fs__list-item {
+        min-width: 120px;
+        max-width: 300px;
+        margin: auto;
+        @include breakpoint('small'){
+            float: left;
+            margin-right: 1rem;
+        }
+    }
+
+    a {
+        padding-top: remCalc(9px);
+        padding-bottom: remCalc(6px);
+        line-height: 1.2rem;
+        width: 100%;
+    }
+
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.page--category .page-heading {
+    margin-bottom: 0;
+}
+
+.category-heading__container {
+    padding-bottom: 2rem;
+
+    [data-content-region]{
+        border-bottom: 2px solid #d3d3d3;
+    }
+}

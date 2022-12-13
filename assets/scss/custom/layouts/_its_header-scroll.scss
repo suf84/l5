@@ -1,0 +1,74 @@
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+.header-1__bottom {
+    .navPages > a {
+        display: none;
+    }
+    @include breakpoint('medium') {
+        .navPages > a {
+          display: flex;
+            opacity: 0;
+            visibility: hidden;
+            .navUser-item-cartLabel {
+              display: inline-block;
+            }
+        }
+        
+        &.header--show .navPages > a {
+            animation: fade-out 250ms forwards;
+
+        }
+        &.header--hide {
+                @include breakpoint('medium') {
+                position: fixed;
+                top: 0px;
+                width: 100%;
+                transition: top 0.35s ease;
+                z-index: 100;
+            }
+            .countPill {
+              color: #222222;
+            }
+            a {
+                animation: fade-in 150ms forwards;
+            }
+        }
+    }
+}
+
+.header-1__shipping-container .header-1__link-1, .header-1__shipping-container .header-1__link-2 {
+
+    @include breakpoint('medium') {
+        display: none;
+        animation: fade-out 150ms forwards;
+        &.open {
+            display: block;
+            animation: fade-in 150ms forwards;
+        }
+    }
+}
+/*
+  If using this class you'll need to update the useClassToHide VAR in the JS.
+  By default jQuery is used to figure out the current headers height (Recommended).
+  This functionality should really only be used if you need to do some kind of fancy animation.
+*/

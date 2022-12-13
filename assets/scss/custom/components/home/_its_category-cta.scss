@@ -1,0 +1,131 @@
+.category-cta {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.category-cta__container {
+    display: grid;
+    padding: 2rem 0;
+    gap: 1rem;
+
+    @include breakpoint('small') {
+        gap: 2.5rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint('medium') {
+        gap: 3.5rem 1.5rem;
+    }
+}
+
+.category-cta-heading {
+    text-align: center;
+    margin: 0;
+}
+
+.category-card {
+    position: relative;
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.category-card__figure {
+    margin: 0;
+    border-radius: $radius-heavy;
+    overflow: hidden;
+
+    img {
+        border-radius: $radius-heavy;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: all linear 0.15s;
+
+        @include breakpoint('small') {
+            height: auto;
+            object-fit: cover;
+            max-height: 420px;
+        }
+        
+        @media (max-width: 768px) {
+            height: 250px;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+}
+
+.category-card__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    .category-card__heading,
+    .category-card__text {
+        color: $color-white;
+    }
+
+    @include breakpoint('small') {
+        justify-content: end;
+        height: auto;
+        bottom: -23px;
+        gap:60px
+    }
+}
+
+
+.category-card__content-container {
+    padding: 0 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint('small') {
+        display: block;
+        height: auto;
+        max-width: remCalc(560px);
+    }
+}
+
+.category-card__text {
+    margin: 0;
+}
+
+.category-card__content .category-card__button {
+    position: static;
+    width: 100%;
+    margin-bottom: 0;
+    border-bottom-right-radius: $radius-heavy;
+    border-bottom-left-radius: $radius-heavy;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        content: "";
+    }
+
+    @include breakpoint('medium') {
+        width: 75%;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    @include breakpoint('large') {
+        max-width: 450px;
+    }
+}

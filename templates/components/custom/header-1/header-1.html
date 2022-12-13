@@ -1,0 +1,62 @@
+<a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+{{#if banners.top}}
+<div class="banners" data-banner-location="top">
+    {{#each (limit banners.top_metadata 1)}}
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+        <div data-event-type="promotion-click">
+            {{{this.content}}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+
+
+<header class="header header-1 header-1--default" role="banner">
+    <!-- {{!> components/custom/nagbar }} -->
+
+    <div class="header-1__top container">
+        <div class="header-1__shipping-container">
+            {{#for 1 (lang 'custom.header.top-navigation.shipping-header.number-of-headers')}}
+            <a class="header-1__link-{{$index}} {{#if $index '==='1}}open{{/if}}" href="{{lang (concat (concat 'custom.header.top-navigation.shipping-header.header-'$index)'.shipping-link')}}">{{lang (concat (concat 'custom.header.top-navigation.shipping-header.header-'$index)'.shipping-message')}}
+            </a>
+            {{/for}}
+        </div>
+        {{> components/custom/header-1/header-1_top-nav}}
+    </div>
+    
+    <div class=" bg-paint-splatter">
+        <div class="header-1__mid container">
+            {{#if page_type '===' 'default'}}
+                <h1 class="header-logo">
+                    {{> components/common/store-logo}}
+                </h1>
+            {{else}}
+                <div class="header-logo">
+                    {{> components/common/store-logo}}
+                </div>
+            {{/if}}
+    
+            <div class="navPages-container-title">
+                <p>DRYWALL FINISHING TOOLS YOU CAN TRUST™</p>
+            </div>
+    
+            {{> components/custom/header-1/header-1_navigation}}
+    
+            <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+                <span class="mobileMenu-toggleIcon">Close</span>
+            </a>
+        </div>
+    </div>
+
+    {{!-- Bottom --}}
+    <div class="header-1__bottom">
+        <div class="navPages-container container is-close" id="menu" data-menu>
+            <div class="navPages-placeholder"></div>
+            {{> components/custom/header-1/header-1_navigation-menu}}
+        </div>
+    </div>
+</header>
+
+{{{region name="header_bottom--global"}}}
+{{{region name="header_bottom"}}}

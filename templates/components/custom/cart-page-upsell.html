@@ -1,0 +1,19 @@
+<!--
+
+    show custom field based upsells first
+    then if there are none, show BC's
+
+ -->
+<div id="cpu" class="cpu">
+    <p class="cpu__heading h4">CUSTOMERS ALSO BOUGHT</p>
+    <ul class="cpu__list cpu__list--customfields"></ul> <!-- we'll append product based upsell list here -->
+    {{#if cart.suggested_products}}
+    {{log cart.suggested_products}}
+        <ul class="cpu__list cpu__list--suggested">
+            {{#each (limit cart.suggested_products 3)}}
+                {{> components/custom/cart-page-upsell-item }}
+            {{/each}}
+        </ul>
+    {{/if}}
+    <div class="loadingOverlay"></div>
+</div>

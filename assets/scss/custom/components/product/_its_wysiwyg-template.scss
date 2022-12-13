@@ -1,0 +1,191 @@
+
+.productView-description {
+    margin-top:2rem;
+    padding: 0;
+
+    .tabs-contents {
+        background: #f9f9f9;
+    }
+
+    .productView-title {
+        display: none;
+    }
+}
+.has-activeModal {
+    .productView-description {
+        .tabs-wrapper {
+            .container {
+                padding: 0;
+            }
+        }
+        .tab-content {
+            .container {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.pdp-template__content {
+    @media (min-width:1025px) {
+                .pdp-template__content {
+                    max-height: 500px;
+                    overflow: auto;
+                }
+            }
+}
+
+.pdp-template .pdp-template__content.full-width {
+    width: 100%;
+}
+
+.pdp-template {
+    // max-width: 1500px;
+    margin: 0 auto;
+    // padding: 0;
+
+    .pdp-template__section {
+        .pdp-template__content {
+            padding: 1.5rem 1.5rem;
+
+            h2 {
+                margin-top: 0;
+            }
+ 
+          @include breakpoint('medium') {
+                    max-height: 500px;
+                    overflow: auto
+          }
+ 
+            @include breakpoint('large') {
+                padding: 2rem 4rem 4rem 0;
+                
+            }
+        }
+
+        .pdp-template__image {
+            max-height:500px;
+            display: flex;
+            justify-content: center;
+            img {
+                object-fit: cover;
+                width:100%;
+            }
+        }
+
+        @include breakpoint('medium') {
+            display: flex;
+
+            &:nth-child(2n) .pdp-template__image {
+                order: -1;
+            }
+        }
+    }
+
+    .pdp-template__image,
+    .pdp-template__content {
+        width: 100%;
+        @include breakpoint('medium') {
+            width: 50%;
+        }
+    }
+
+    .pdp-template__set-items {
+        margin: 0;
+        padding: 0.5rem 0;
+        list-style: none;
+
+        /* width */
+        &::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background-color: #ffffff;
+            box-shadow: inset 0 0 5px #e3e3e3;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #B20000;
+            border-radius: 10px;
+        }
+
+        li {
+            position: relative;
+            display: flex;
+            margin: 0 .5rem;
+            margin-right: 1rem;
+            padding: 1rem;
+            text-decoration: none;
+            border-top: 1px solid #e3e3e3;
+
+            &:first-child {
+                border-top: none;
+            }
+
+            &:hover {
+                background-color: #e3e3e3;
+            }
+
+            h3,
+            p {
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            div:first-child {
+                margin-right: 1rem;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+            }
+
+            img {
+                border: 1px solid #e3e3e3;
+                border-radius: 4px;
+                max-width: 3.5rem;
+            }
+
+            h3 {
+                font-size: 14px;
+                a {
+                    display: block;
+                    color: #B20000;
+                    text-decoration: none;
+                    font-family: $header-font-family;
+                    font-weight: 400;
+
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        color: #B20000;
+                    }
+                }
+            }
+
+            p {
+                color: #666666;
+                font-size:.8rem;
+
+                &:first-of-type {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    color: #000000;
+                    display:none;
+
+                }
+            }
+        }
+    }
+}

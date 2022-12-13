@@ -1,0 +1,13 @@
+<article class="blog-side__container">
+    <h3 class="blog-sidebar__header h3">
+        {{lang 'custom.blog.sidebar.finishers-pick.heading'}}
+    </h3>
+    <ul class="blog-sidebar__list">
+        {{#for 1 (lang 'custom.blog.sidebar.finishers-pick.number-of-posts')}}
+        <li class="blog-sidebar__list-item">
+            <a href="{{lang (concat (concat 'custom.blog.sidebar.finishers-pick.post-'$index)'.link')}}">{{lang (concat (concat 'custom.blog.sidebar.finishers-pick.post-'$index)'.title')}}</a>
+        </li>
+        {{/for}}
+    </ul>
+</article>
+    

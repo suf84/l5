@@ -1,0 +1,115 @@
+.mega-menu {
+    max-width: 200px;
+
+    @media only screen and (max-width: 1024px) {
+        display: none;
+    }
+}
+
+.mega-menu__image {
+    width: 100%;
+}
+
+.mega-menu__title {
+    font-size: remCalc(18px);
+    color: #444;
+    font-weight: $fontWeight-thin;
+}
+
+.mega-menu__text {
+    font-size: remCalc(24px);
+    font-weight: $fontWeight-medium;
+    color: $color-primary--hover;
+    text-align: center;
+}
+
+.mega-menu__text-discount {
+    font-size: remCalc(18px);
+    font-weight: $fontWeight-medium;
+    color: #444;
+    text-decoration: line-through;
+    padding-left: 0.75rem;
+}
+
+//Mobile Menu Styles
+
+// @keyframes mobile-menu-fade {
+//     0% {
+//         width: 100%;
+//     }
+//     100% {
+//         width: 50%;
+//     }
+// }
+
+// .navPages-container {
+//     transition: opacity 0.25s ease-in-out;
+//     transform: translateX(0);
+//     width: 100vw;
+// }
+
+
+.navPages-container.is-open {
+    // width: 90vw;
+    z-index: 49;
+    // transition: all 3s ease-in-out;
+    // animation: mobile-menu-fade 3s ease-in-out;
+}
+
+.navPage-subMenu-list .navPage-subMenu-action.navPages-action {
+
+    @include breakpoint('medium') {
+        // 801px and up
+        // font-size: 21px;
+        font-weight: $fontWeight-normal;
+        font-family: $header-font-family;
+        color: #222;
+        text-transform: uppercase;
+    }
+}
+
+.navPage-subMenu-list .navPage-childList-action {
+    @include breakpoint('medium') {
+        // 801px and up
+        font-weight: $fontWeight-thin;
+        color: #333;
+    }
+}
+
+.navPage-subMenu-list--bottomContainer {
+    grid-template-columns:repeat(2, auto);
+    display: grid;
+}
+
+.navPage-subMenu-list--bottomContainer .navPage-subMenu-list--textContain-1 {
+    background-color: black;
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-self: center;
+
+    > a {
+        color: white;
+        text-decoration: none !important;
+    }
+}
+
+.navPage-subMenu-list--bottomContainer .navPage-subMenu-list--textContain-2 {
+    background-color: $color-primary;
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 150ms ease-out;
+    &:hover {
+        background-color: $color-primary--hover;
+    }
+    > a {
+        color: white;
+        text-decoration: none !important;
+    }
+}
+
+section.mega-menu__text-container {
+    text-align: center;
+}

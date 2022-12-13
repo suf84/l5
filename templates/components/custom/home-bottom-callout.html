@@ -1,0 +1,108 @@
+<section class="container home-bottom-callout">
+    
+    <div class="home-bottom-callout__container container">
+        <!-- giveaway -->
+        <article class="home-bottom-card home-bottom-card--giveaway" >
+            <div class="home-bottom-card__content">
+                <h1 class="home-bottom-card__heading h2">
+                    {{~lang 'custom.home.bottom-callout.callout-1.title'~}}
+                </h1>
+                <p class="home-bottom-card__text">
+                    <span class="home-bottom-card__text-month">
+                        {{lang 'custom.home.bottom-callout.callout-1.month'}}
+                    </span>
+
+                    <br>
+
+                    <span class="home-bottom-card__text-winner h3">
+                        {{lang 'custom.home.bottom-callout.callout-1.winner-name'}}
+                    </span>
+
+                    <br>
+
+                    {{lang 'custom.home.bottom-callout.callout-1.location'}}
+                </p>
+            </div>
+            <div class="home-bottom-card__item">
+                <div class="home-bottom-card__item-content">
+                    <h2 class="home-bottom-card__item-heading h4">
+                        {{~lang 'custom.home.bottom-callout.callout-1.item-month'~}}
+                    </h2>
+                    <div class="home-bottom-card__item-wrapper">
+                        <div class="home-bottom-card__item-image">
+                            <img src="{{cdn (concat 'webdav:' (lang 'custom.home.bottom-callout.callout-1.item-image'))}}"
+                                alt="{{lang 'custom.home.bottom-callout.callout-1.item-image-alt'}}">
+                        </div>
+                        <div class="home-bottom-card__item-text">
+                            <div>
+                                <img src="{{cdn (concat 'webdav:' (lang 'custom.home.bottom-callout.callout-1.item-brand-img'))}}"
+                                    alt="{{lang 'custom.home.bottom-callout.callout-1.item-brand-img-alt'}}">
+                            </div>
+                            <p>
+                                <span>
+                                    {{lang 'custom.home.bottom-callout.callout-1.item-title'}}
+                                </span>
+                                <br>
+                                {{{lang 'custom.home.bottom-callout.callout-1.item-value'}}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <p class="home-bottom-card__link">
+                    {{lang 'custom.home.bottom-callout.callout-1.link-text'}}
+                    <a  href="{{lang 'custom.home.bottom-callout.callout-1.link-url'}}" >
+                        Join today!
+                    </a> 
+                </p>
+            </article>
+
+        <!-- VIP Registration -->
+        <article class="bg-paint-splatter home-bottom-card home-bottom-card--vip" >
+            <div class="home-bottom-card__content">
+                <h1 class="home-bottom-card__heading h2">
+                    {{~lang 'custom.home.bottom-callout.callout-2.title'~}}
+                </h1>
+                <ul class="home-bottom-card__list">
+                    <li class="h3">{{{lang 'custom.home.bottom-callout.callout-2.bullet-1'}}}</li>
+                    <li class="h3">{{{lang 'custom.home.bottom-callout.callout-2.bullet-2'}}}</li>
+                    <li class="h3">{{{lang 'custom.home.bottom-callout.callout-2.bullet-3'}}}</li>
+                </ul>
+            </div>
+            <div class="home-bottom-card__newsletter">
+                {{#if settings.show_newsletter_box}}
+                {{> components/common/subscription-form}}
+                {{/if}}
+            </div>
+                <p class="home-bottom-card__link">
+                    {{{lang 'custom.home.bottom-callout.callout-2.details-text'}}}
+                </p>
+            </article>
+
+        <!-- Blog -->
+        <a class="home-bottom-card home-bottom-card--blog" href="{{lang 'custom.home.bottom-callout.callout-3.button-link'}}">
+            <article >
+                <h1 class="home-bottom-card__heading h2">{{lang 'custom.home.bottom-callout.callout-3.title'}}</h1>
+                <img class="home-bottom-card__image"
+                    src="{{cdn (concat 'webdav:' (lang 'custom.home.bottom-callout.callout-3.image'))}}"
+                    alt="{{lang 'custom.home.bottom-callout.callout-3.image-alt'}}">
+                <div class="home-bottom-card__content">
+                    <div class="home-bottom-card__icon-wrapper">
+                        <span class="icon icon--youtube">
+                            <svg>
+                                <use xlink:href="#icon-youtube"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="home-bottom-card__text">
+                        <h2 class="home-bottom-card__text-heading h3">{{lang
+                            'custom.home.bottom-callout.callout-3.heading'}}</h2>
+                        <p class="home-bottom-card__text-desc">{{lang 'custom.home.bottom-callout.callout-3.text'}}</p>
+
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    </div>
+</section>
