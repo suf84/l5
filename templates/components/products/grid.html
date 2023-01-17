@@ -1,7 +1,27 @@
-<ul class="productGrid">
+
+<div class="grid" id="grid-block">
     {{#each products}}
-    <li class="product">
+    
+    <div 
+        id='product-{{id}}'
+        class="product"
+        {{assignVar "foo" 0}} 
+        product-data-category='{{#each (split category.[0] "/")}}
+            {{#if (getVar "foo") '===' 0}}
+                {{pascalcase this}}
+                {{assignVar "foo" 1}}
+                {{assignVar "main" this}} 
+            {{else}}
+                {{snakecase (getVar "main")}}_{{snakecase this}}
+            {{/if}} 
+        {{/each}}'
+        {{#filter custom_fields '__product-fake-heading' property='name'}}
+              product-data-name="{{this.value}}" 
+        {{/filter}}
+        product-data-review='{{rating}}'
+        product-data-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}"
+    >
             {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event=../event position=(add @index 1)}}
-    </li>
+    </div>
     {{/each}}
-</ul>
+</div>

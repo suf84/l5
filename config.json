@@ -39,11 +39,7 @@
   },
   "css_compiler": "scss",
   "autoprefixer_cascade": true,
-  "autoprefixer_browsers": [
-    "> 1%",
-    "last 2 versions",
-    "Firefox ESR"
-  ],
+  "autoprefixer_browsers": ["> 1%", "last 2 versions", "Firefox ESR"],
   "settings": {
     "its": {
       "brand_carousel": false,
@@ -78,7 +74,7 @@
     "hide_blog_page_heading": false,
     "hide_contact_us_page_heading": false,
     "restrict_to_login": false,
-    "categorypage_products_per_page": 12,
+    "categorypage_products_per_page": 100,
     "brandpage_products_per_page": 12,
     "searchpage_products_per_page": 12,
     "brandspage_brands_per_page": 12,
@@ -410,10 +406,7 @@
       "mastercard",
       "visa"
     ],
-    "supported_payment_methods": [
-      "card",
-      "paypal"
-    ],
+    "supported_payment_methods": ["card", "paypal"],
     "lazyload_mode": "lazyload+lqip",
     "show-admin-bar": true,
     "checkout-paymentbuttons-paypal-color": "black",
@@ -458,12 +451,9 @@
           "sales_discounts",
           "large_catalog"
         ],
-        "industries": [
-          "home_garden"
-        ]
+        "industries": ["home_garden"]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "its": {
           "brand_carousel": false,
@@ -498,7 +488,7 @@
         "hide_blog_page_heading": false,
         "hide_contact_us_page_heading": false,
         "restrict_to_login": false,
-        "categorypage_products_per_page": 12,
+        "categorypage_products_per_page": 100,
         "brandpage_products_per_page": 12,
         "searchpage_products_per_page": 12,
         "brandspage_brands_per_page": 12,
@@ -830,10 +820,7 @@
           "mastercard",
           "visa"
         ],
-        "supported_payment_methods": [
-          "card",
-          "paypal"
-        ],
+        "supported_payment_methods": ["card", "paypal"],
         "lazyload_mode": "lazyload+lqip",
         "show-admin-bar": true,
         "checkout-paymentbuttons-paypal-color": "black",
