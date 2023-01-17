@@ -1,0 +1,12 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {
+      "example-all-product": "/all-product-example/"
+    }
+  },
+  "normalStoreUrl": "https://www.level5tools.com",
+  "port": 3000
+}

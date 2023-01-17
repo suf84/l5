@@ -106,7 +106,8 @@
     </figure>
     <div class="card-body">
         {{#filter custom_fields '__product-fake-heading' property='name'}}
-            <p class="productView-type-title h4">{{{this.value}}}</p>
+            <p class="productView-type-title h4" product-name>{{this.value}}</p>
+           
         {{/filter}}
         
         <h3 class="card-title {{#filter custom_fields '__product-fake-heading' property='name'}}{{else}}--no-custom-fields{{/filter}}">
@@ -157,3 +158,4 @@
     </div>
 </article>
 </div>
+

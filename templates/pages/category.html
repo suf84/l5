@@ -6,6 +6,17 @@ category:
 ---
 {{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
 {{inject "categoryId" category.id}}
+{{inject "productList" category.products}}
+
+{{#if (getVar 'UUIDcounter')}}
+    {{assignVar 'UUIDcounter' (add (getVar 'UUIDcounter') 1)}}
+    {{assignVar 'UUIDcatc' (add (toInt (moment unixtimestamp format="x")) (getVar 'UUIDcounter'))}}
+{{else}}
+    {{assignVar 'UUIDcounter' 1}}
+    {{assignVar 'UUIDcatc' (toInt (moment unixtimestamp format="x"))}}
+{{/if}}
+
+{{inject "UUIDcatc" (getVar 'UUIDcounter')}}
 
 {{#partial "head"}}
     {{#if pagination.category.previous}}
@@ -20,6 +31,96 @@ category:
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
+<style>
+.grid {
+ /* background: #DDD; */
+  display: none;
+  max-width: 1200px;
+  width: 1200px;
+  gap: 50px;
+  place-items: center;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.product {
+  float: center;
+  width: 25%;
+  min-width: 280px;
+  height: 450px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+
+}
+.flex-div-section {
+  display: flex;
+  justify-content: flex-start
+}
+
+.filter--section{
+    width: 300px;
+    margin-right: 25px;
+}
+
+#product-listing-all{
+    margin-left: 35px;
+}
+
+
+/***************************************************************************/
+
+.lds-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #3498db;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #3498db transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+</style>
+{{category.id}}
 <div class="page">
     <div class="container category-heading__container">
         {{#unless theme_settings.hide_category_page_heading }}
@@ -63,13 +164,60 @@ category:
     </section>
     {{/if}}
 
-
     {{#if theme_settings.its.category_subcat_cards}}
         {{> components/custom/subcat-grid}}
     {{/if}}
-
+    
+    {{!-- temp
     <section class="container" id="product-listing-container">
         {{> components/category/product-listing}}
+    </section>
+    --}}
+    
+    <!--ALL PRODUCT-->  
+    
+    <section id="product-listing-all">
+        <h2>All Product</h2>
+        <div class="flex-div-section">
+            <div class="actionBar filter--section" >
+                <fieldset class="form-fieldset actionBar-section" >
+                    <div class="form-field" align="left">
+                        <label class="form-label" for="sort">{{lang 'common.sorter.sort_by'}}</label>
+                        <select class="form-select form-select--small " name="sort" id="all-sort-select" role="listbox">
+                            <!--<option value="">Select one...</option>
+                            <option value="featured" {{#if sort '==' 'featured'}}selected{{/if}}>{{lang 'common.sorter.featured'}}</option>-->
+                            <option value="best_selling-desc" {{#if sort '==' 'bestselling'}}selected{{/if}}>{{lang 'common.sorter.top_sellers'}}</option>
+                            <option value="newest-asc" {{#if sort '==' 'newest'}}selected{{/if}}>{{lang 'common.sorter.newest'}}</option>
+                            
+                            <option value="name-asc" {{#if sort '==' 'alphaasc'}}selected{{/if}}>{{lang 'common.sorter.alpha_asc'}}</option>
+                            <option value="name-desc" {{#if sort '==' 'alphadesc'}}selected{{/if}}>{{lang 'common.sorter.alpha_desc'}}</option>
+                            <option value="review-desc" {{#if sort '==' 'avgcustomerreview'}}selected{{/if}}>{{lang 'common.sorter.reviews'}}</option>
+                            <option value="price-asc" {{#if sort '==' 'priceasc'}}selected{{/if}}>{{lang 'common.sorter.price_asc'}}</option>
+                            <option value="price-desc" {{#if sort '==' 'pricedesc'}}selected{{/if}}>{{lang 'common.sorter.price_desc'}}</option>
+                            {{#if result_count}}
+                                <option value="relevance" {{#if sort '==' 'relevance'}}selected{{/if}}>{{lang 'common.sorter.relevance'}}</option>
+                            {{/if}}
+                        </select>
+                        <br>
+                        <label class="form-label" for="sort">Filter by:</label>
+                        <br>
+                        <input type="checkbox" id="featured-checkbox" name="featured" checkbox-filter-all><label class="form-label" for="featured">{{lang 'common.sorter.featured'}}</label>
+                        <br>
+                        
+                        {{#each categories}}
+                                <input type="checkbox" filter-value="{{id}}" checkbox-filter-all name="filter-all"><label class="form-label" for="filter-all">{{name}}</label>
+                                <br>
+                        {{/each}}
+                    </div>
+                </fieldset>
+            </div>
+            <div class="lds-block">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <div class="grid" id="grid-all-product">
+            </div>
+        </div>
+
     </section>
 
     {{#if banners.bottom}}
@@ -116,5 +264,54 @@ category:
     <div class="loadingOverlay loadingOverlay--product-listing"></div>
 </div>
 
+
+
 {{/partial}}
 {{> layout/base container_active=false}}
+
+{{!--
+{{#each categories}}
+    {{id}}<br>
+    {{#each children}}
+    &emsp;{{id}}<br>
+            {{#each children}}
+                &emsp;&emsp;{{id}}
+            {{/each}}<br>
+
+    {{/each}}
+
+{{/each}}
+--}}
+
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+    window.loadScript("https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js")
+    let grid;
+    
+    if (document.readyState === "complete") {
+    // Document already fully loaded
+    ready();
+    } else {
+        // Add event listener for DOMContentLoaded (fires when document is fully loaded)
+        document.addEventListener("DOMContentLoaded", ready);
+    }
+    
+    function ready() {
+        
+        // Handler here
+        console.log("ready")
+        grid = new Isotope( '#grid-block', {
+            itemSelector: '.product',
+            layoutMode: 'fitRows'
+            
+            
+        });
+    }
+    
+    
+
+</script>
+
+-->
